@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physix Tatvam | Interactive Physics Simulations & Smart Whiteboard</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glow-cyan {
+      box-shadow: 0 0 50px -10px rgba(56, 189, 248, 0.25);
+    }
+    .glow-indigo {
+      box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-[#0b0f19] text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- ================= Navigation Bar ================= -->
+  <nav class="sticky top-0 z-50 backdrop-blur-xl bg-[#0b0f19]/80 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-sky-500 to-emerald-400 p-[2px] transition group-hover:scale-105">
+            <div class="w-full h-full bg-[#0b0f19] rounded-[10px] flex items-center justify-center">
+              <i data-lucide="atom" class="w-6 h-6 text-sky-400"></i>
+            </div>
+          </div>
+          <div>
+            <span class="text-xl font-bold bg-gradient-to-r from-sky-400 via-indigo-300 to-white bg-clip-text text-transparent">
+              Physix Tatvam
+            </span>
+            <span class="hidden sm:inline-block text-[10px] font-medium tracking-widest text-slate-400 block -mt-1 uppercase">Visual Science</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+          <a href="#simulations" class="hover:text-sky-400 transition">Simulations</a>
+          <a href="#whiteboard" class="hover:text-sky-400 transition">Smart Whiteboard</a>
+          <a href="#features" class="hover:text-sky-400 transition">Features</a>
+          <a href="#pricing" class="hover:text-sky-400 transition">Premium</a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-3">
+          <a href="#whiteboard" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg border border-slate-700 bg-slate-900/60 hover:bg-slate-800 hover:border-slate-600 transition">
+            <i data-lucide="pen-tool" class="w-3.5 h-3.5 text-sky-400"></i>
+            Launch Board
+          </a>
+          <a href="#simulations" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 transition">
+            Explore Sims
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= Hero Section ================= -->
+  <section class="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden border-b border-slate-800/80">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#0b0f19] to-[#0b0f19] -z-10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <!-- Announcement Pill -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-300 text-xs font-medium mb-6 backdrop-blur-md">
+        <span class="flex h-2 w-2 rounded-full bg-sky-400 animate-pulse"></span>
+        Interactive 2D/3D Learning for JEE, NEET & Foundations
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
+        Experience Physics, <br>
+        <span class="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          Don't Just Memorize Formulas.
+        </span>
+      </h1>
+
+      <p class="mt-6 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Explore interactive virtual physics experiments, manipulate parameters in real time, and sketch derivations on our dedicated Smart Teaching Whiteboard.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#simulations" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 transition">
+          <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+          Start Exploring Free
+        </a>
+        <a href="#whiteboard" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium text-sm flex items-center justify-center gap-2 transition">
+          <i data-lucide="layout" class="w-4 h-4 text-emerald-400"></i>
+          Open Smart Whiteboard
+        </a>
+      </div>
+
+      <!-- Live Quick Stats -->
+      <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto border-t border-slate-800/80 pt-8 text-center">
+        <div>
+          <div class="text-2xl font-bold text-white">100%</div>
+          <div class="text-xs text-slate-400 mt-0.5">Interactive WebGL Sims</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-sky-400">Real-Time</div>
+          <div class="text-xs text-slate-400 mt-0.5">Parameter Controls</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-indigo-400">0 ms Latency</div>
+          <div class="text-xs text-slate-400 mt-0.5">In-Browser Whiteboard</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-emerald-400">Free</div>
+          <div class="text-xs text-slate-400 mt-0.5">Core Foundation Access</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= Smart Whiteboard Spotlight Banner ================= -->
+  <section id="whiteboard" class="py-16 bg-[#0f1523] border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl bg-gradient-to-br from-slate-900 via-indigo-950/40 to-slate-900 border border-slate-700/80 p-8 md:p-12 glow-indigo flex flex-col lg:flex-row items-center justify-between gap-10">
+        
+        <div class="max-w-xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+            Educator & Student Toolkit
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-bold text-white mt-4">
+            Tatvam Smart Whiteboard
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
+            A minimalist, high-speed digital canvas tailored for physics educators and self-learners. Draw vector diagrams, graph equations, sketch free-body diagrams, and export high-res notes instantly.
+          </p>
+          
+          <ul class="mt-6 space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-sky-400"></i>
+              Smooth stylus & graphics tablet compatibility (XP-Pen, Wacom)
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-sky-400"></i>
+              Pre-built physics grid, axes, and coordinate geometry snapping
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-sky-400"></i>
+              One-click PNG & SVG export for study materials
+            </li>
+          </ul>
+
+          <div class="mt-8 flex items-center gap-4">
+            <!-- Replace this link with your actual whiteboard deployment URL -->
+            <a href="https://yourusername.github.io/smart-board" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm inline-flex items-center gap-2 transition shadow-lg shadow-emerald-500/20">
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+              Launch Whiteboard App
+            </a>
+          </div>
+        </div>
+
+        <!-- Whiteboard Preview Mockup -->
+        <div class="w-full lg:w-1/2 aspect-video bg-slate-950 rounded-xl border border-slate-700/80 p-4 shadow-2xl relative overflow-hidden flex flex-col justify-between">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+              <span class="text-xs text-slate-400 ml-2 font-mono">canvas_mode: active</span>
+            </div>
+            <div class="flex gap-2 text-slate-400">
+              <i data-lucide="pen" class="w-4 h-4 text-sky-400"></i>
+              <i data-lucide="circle" class="w-4 h-4"></i>
+              <i data-lucide="undo" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div class="my-auto text-center py-8">
+            <i data-lucide="compass" class="w-12 h-12 text-slate-600 mx-auto mb-2 animate-bounce"></i>
+            <p class="text-slate-400 text-xs font-mono">Interactive Drawing Canvas Ready</p>
+          </div>
+          <div class="border-t border-slate-800 pt-2 text-[11px] text-slate-500 flex justify-between">
+            <span>Grid: Cartisian 10px</span>
+            <span>Zoom: 100%</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Interactive Simulations Catalog ================= -->
+  <section id="simulations" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+      <div>
+        <h2 class="text-3xl font-extrabold text-white">Interactive Simulations</h2>
+        <p class="text-slate-400 text-sm mt-1">Select a module to launch full-screen interactive experiment</p>
+      </div>
+
+      <!-- Categories Filter Tabs (Can be toggled via JS) -->
+      <div class="mt-4 md:mt-0 flex flex-wrap gap-2 text-xs font-medium">
+        <button class="px-3.5 py-1.5 rounded-lg bg-indigo-600 text-white">All Modules</button>
+        <button class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition">Mechanics</button>
+        <button class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition">Electromagnetism</button>
+        <button class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition">Optics & Waves</button>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Simulation Card 1: 3D Lorentz Force -->
+      <div class="group rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-sky-500/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[11px] font-semibold tracking-wider text-sky-400 bg-sky-500/10 px-2.5 py-0.5 rounded-md border border-sky-500/20 uppercase">
+              Electrodynamics
+            </span>
+            <span class="text-xs text-slate-400 flex items-center gap-1">
+              <i data-lucide="box" class="w-3.5 h-3.5 text-indigo-400"></i> 3D Three.js
+            </span>
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-sky-300 transition">
+            Charged Particle in E & B Fields
+          </h3>
+          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+            Visualize helical, cycloid, and drift trajectories of charges under crossed electric and magnetic vectors.
+          </p>
+        </div>
+
+        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Free Access</span>
+          <!-- Replace '#' with your GitHub Pages / Hosted Simulation link -->
+          <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-400 hover:text-sky-300 transition">
+            Launch Simulation <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Simulation Card 2: Projectile Motion Sandbox -->
+      <div class="group rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[11px] font-semibold tracking-wider text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-md border border-indigo-500/20 uppercase">
+              Mechanics
+            </span>
+            <span class="text-xs text-slate-400 flex items-center gap-1">
+              <i data-lucide="activity" class="w-3.5 h-3.5 text-indigo-400"></i> Kinematics
+            </span>
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition">
+            Projectile Motion with Air Drag
+          </h3>
+          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+            Adjust launch angles, initial velocity, gravity, and air resistance to study trajectory deviations and optimal range.
+          </p>
+        </div>
+
+        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Free Access</span>
+          <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition">
+            Launch Simulation <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Simulation Card 3: Wave Optics & Interference -->
+      <div class="group rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[11px] font-semibold tracking-wider text-purple-400 bg-purple-500/10 px-2.5 py-0.5 rounded-md border border-purple-500/20 uppercase">
+              Optics
+            </span>
+            <span class="text-xs text-slate-400 flex items-center gap-1">
+              <i data-lucide="layers" class="w-3.5 h-3.5 text-purple-400"></i> Wave Theory
+            </span>
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition">
+            Young's Double Slit Experiment
+          </h3>
+          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+            Change wavelength $(\lambda)$, slit separation $(d)$, and screen distance $(D)$ to inspect fringe patterns and intensity curves.
+          </p>
+        </div>
+
+        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Free Access</span>
+          <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-400 hover:text-purple-300 transition">
+            Launch Simulation <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Simulation Card 4: Simple Harmonic Motion & Pendulum -->
+      <div class="group rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[11px] font-semibold tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/20 uppercase">
+              Oscillations
+            </span>
+            <span class="text-xs text-slate-400">Phase Space</span>
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition">
+            Coupled Oscillators & Damped SHM
+          </h3>
+          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+            Live velocity vs displacement phase portraits with energy distribution graphs ($KE$ and $PE$).
+          </p>
+        </div>
+
+        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Free Access</span>
+          <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition">
+            Launch Simulation <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Simulation Card 5: Electrostatics Field Lines -->
+      <div class="group rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[11px] font-semibold tracking-wider text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-md border border-amber-500/20 uppercase">
+              Electrostatics
+            </span>
+            <span class="text-xs text-slate-400">Field Vectors</span>
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition">
+            Point Charge Configurations
+          </h3>
+          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+            Drag multiple positive and negative charges to watch real-time recalculation of electric flux and equipotential lines.
+          </p>
+        </div>
+
+        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Free Access</span>
+          <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 transition">
+            Launch Simulation <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Simulation Card 6: Premium / Advanced Masterclass (Monetization Teaser) -->
+      <div class="group rounded-2xl bg-gradient-to-b from-indigo-950/40 to-slate-900 border border-indigo-500/30 hover:border-indigo-400 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between glow-indigo">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[11px] font-semibold tracking-wider text-amber-300 bg-amber-400/10 px-2.5 py-0.5 rounded-md border border-amber-400/30 uppercase flex items-center gap-1">
+              <i data-lucide="lock" class="w-3 h-3"></i> Premium Pack
+            </span>
+            <span class="text-xs text-slate-400">JEE Adv / CSIR</span>
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-indigo-200 transition">
+            Advanced Derivations & Video Modules
+          </h3>
+          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+            Full problem-solving suites, downloadable lecture notes, and step-by-step mathematical animations.
+          </p>
+        </div>
+
+        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-semibold text-amber-400">₹499 / Year</span>
+          <a href="#pricing" class="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-300 hover:text-white transition">
+            Unlock Access <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= Future Monetization / Membership Section ================= -->
+  <section id="pricing" class="py-20 bg-[#090d16] border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
+        Monetization & Plans
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4">
+        Support Open Science, Unlock Master Tools
+      </h2>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-xl mx-auto">
+        Foundational simulations are free forever. Upgrade to support new experiments and access educator toolkits.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto text-left">
+        
+        <!-- Free Community Plan -->
+        <div class="rounded-2xl bg-slate-900 border border-slate-800 p-8 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-white">Free Explorer</h3>
+            <p class="text-xs text-slate-400 mt-1">Ideal for foundation & school students</p>
+            <div class="text-3xl font-extrabold text-white mt-6">₹0 <span class="text-xs text-slate-500 font-normal">/ lifetime</span></div>
+
+            <ul class="mt-6 space-y-3 text-sm text-slate-300">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> All standard 2D physics simulations
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Core whiteboard drawing & canvas tools
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Standard WebGL performance
+              </li>
+            </ul>
+          </div>
+          <button class="mt-8 w-full py-2.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs transition">
+            Included by Default
+          </button>
+        </div>
+
+        <!-- Pro / Educator Plan -->
+        <div class="rounded-2xl bg-gradient-to-b from-indigo-950/60 to-slate-900 border-2 border-indigo-500/60 p-8 flex flex-col justify-between glow-indigo relative">
+          <div class="absolute -top-3 right-6 bg-gradient-to-r from-indigo-500 to-sky-500 text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow">
+            Recommended
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Tatvam Pro</h3>
+            <p class="text-xs text-indigo-300 mt-1">For competitive exam prep & teachers</p>
+            <div class="text-3xl font-extrabold text-white mt-6">₹499 <span class="text-xs text-slate-400 font-normal">/ year</span></div>
+
+            <ul class="mt-6 space-y-3 text-sm text-slate-300">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Advanced 3D trajectories & vector math
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> High-res vector exports on Whiteboard
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Complete video derivation notes (PDFs)
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Direct Razorpay instant activation
+              </li>
+            </ul>
+          </div>
+          <!-- Hook this button with your Razorpay checkout trigger -->
+          <button onclick="alert('Razorpay payment gateway can be connected here!')" class="mt-8 w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-lg shadow-indigo-600/30 transition">
+            Subscribe Now
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Footer ================= -->
+  <footer class="border-t border-slate-800 bg-[#070b12] py-12 text-slate-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
+          <i data-lucide="atom" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="font-bold text-white text-sm">Physix Tatvam</span>
+          <p class="text-slate-500">Visualizing physics concepts with clarity.</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="#simulations" class="hover:text-slate-200 transition">Simulations</a>
+        <a href="#whiteboard" class="hover:text-slate-200 transition">Smart Whiteboard</a>
+        <a href="https://youtube.com" target="_blank" class="hover:text-slate-200 transition flex items-center gap-1">
+          <i data-lucide="youtube" class="w-4 h-4 text-rose-500"></i> YouTube
+        </a>
+      </div>
+
+      <div class="text-slate-500">
+        &copy; <span id="year"></span> Physix Tatvam. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Script to activate Lucide Icons & Dynamic Year -->
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
