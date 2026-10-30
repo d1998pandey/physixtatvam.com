@@ -25,8 +25,8 @@
     }
   </script>
   <style>
-    .glow-box {
-      box-shadow: 0 0 50px -15px rgba(99, 102, 241, 0.25);
+    .glow-active {
+      box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.4);
     }
   </style>
 </head>
@@ -72,7 +72,7 @@
         
         <button onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-xs font-semibold text-white flex items-center gap-2 transition">
           <i data-lucide="log-in" class="w-3.5 h-3.5 text-sky-400"></i>
-          Login / Register
+          <span id="userStatusLabel">Login / Register</span>
         </button>
       </div>
 
@@ -184,9 +184,8 @@
         Watch this quick walkthrough demonstrating how to conduct a live lecture using the smart whiteboard and 3D simulations.
       </p>
 
-      <!-- Video Container -->
-      <div class="mt-8 relative aspect-video w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-slate-800 bg-slate-950 shadow-2xl glow-box">
-        <!-- REPLACE 'dQw4w9WgXcQ' with your actual YouTube Video ID -->
+      <div class="mt-8 relative aspect-video w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-slate-800 bg-slate-950 shadow-2xl">
+        <!-- Replace 'dQw4w9WgXcQ' with your actual YouTube Video ID -->
         <iframe 
           class="w-full h-full"
           src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" 
@@ -205,26 +204,26 @@
     </div>
   </section>
 
-  <!-- ================= PRICING & TRIAL PLANS ================= -->
+  <!-- ================= PRICING & INTERACTIVE TRIAL PLANS ================= -->
   <section id="pricing" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-xl mx-auto mb-12">
       <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
         Simple Pricing
       </span>
       <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Start with a 7-Day Trial for Just ₹1</h2>
-      <p class="text-xs sm:text-sm text-slate-400 mt-2">Test all features in your live lectures before deciding. Cancel anytime.</p>
+      <p class="text-xs sm:text-sm text-slate-400 mt-2">Select a plan to preview options. Cancel anytime.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
 
-      <!-- Plan 1: 7-Day Trial into Monthly -->
-      <div class="rounded-3xl bg-slate-900 border-2 border-indigo-500/60 p-8 flex flex-col justify-between glow-box relative">
-        <div class="absolute -top-3 right-6 bg-gradient-to-r from-indigo-500 to-sky-500 text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow">
-          Most Popular
+      <!-- Plan 1: Monthly Card (Clickable) -->
+      <div id="monthlyCard" onclick="selectPlan('monthly')" class="cursor-pointer rounded-3xl bg-slate-900 border-2 border-indigo-500 p-8 flex flex-col justify-between glow-active relative transition-all duration-300">
+        <div id="monthlyBadge" class="absolute -top-3 right-6 bg-gradient-to-r from-indigo-500 to-sky-500 text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow">
+          Selected
         </div>
 
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Educator Monthly Pass</span>
+          <span id="monthlyTitle" class="text-xs font-bold uppercase tracking-wider text-indigo-400">Educator Monthly Pass</span>
           <div class="mt-4 flex items-baseline gap-2">
             <span class="text-4xl font-extrabold text-white">₹1</span>
             <span class="text-xs text-slate-400">for first 7 days</span>
@@ -239,16 +238,20 @@
           </ul>
         </div>
 
-        <button onclick="handleSubscribe('trial')" class="mt-8 w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
+        <button id="monthlyBtn" onclick="event.stopPropagation(); handleSubscribe('trial')" class="mt-8 w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
           <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
           Activate ₹1 Trial Now
         </button>
       </div>
 
-      <!-- Plan 2: Annual Saver Pass -->
-      <div class="rounded-3xl bg-slate-900/60 border border-slate-800 p-8 flex flex-col justify-between">
+      <!-- Plan 2: Annual Card (Clickable) -->
+      <div id="annualCard" onclick="selectPlan('annual')" class="cursor-pointer rounded-3xl bg-slate-900/60 border-2 border-slate-800 hover:border-slate-700 p-8 flex flex-col justify-between relative transition-all duration-300">
+        <div id="annualBadge" class="hidden absolute -top-3 right-6 bg-gradient-to-r from-emerald-500 to-sky-500 text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow">
+          Best Value (Save 25%)
+        </div>
+
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Annual Saver Pass</span>
+          <span id="annualTitle" class="text-xs font-bold uppercase tracking-wider text-slate-400">Annual Saver Pass</span>
           <div class="mt-4 flex items-baseline gap-2">
             <span class="text-4xl font-extrabold text-white">₹1,299</span>
             <span class="text-xs text-slate-500">/ year</span>
@@ -263,7 +266,7 @@
           </ul>
         </div>
 
-        <button onclick="handleSubscribe('annual')" class="mt-8 w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition border border-slate-700">
+        <button id="annualBtn" onclick="event.stopPropagation(); handleSubscribe('annual')" class="mt-8 w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition border border-slate-700">
           Subscribe Annually (₹1,299)
         </button>
       </div>
@@ -271,25 +274,60 @@
     </div>
   </section>
 
-  <!-- ================= DIRECT TOOL LAUNCHER (LOGGED-IN PREVIEW) ================= -->
+  <!-- ================= DIRECT TOOL LAUNCHER (SECURE ACCESS LOCKED) ================= -->
   <section class="py-12 bg-slate-950 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[11px] text-slate-400 mb-3">
+        <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-amber-400"></i>
+        <span>Members Area: Subscription or Trial required to launch</span>
+      </div>
       <h3 class="text-lg font-bold text-white mb-2">Live Teaching Launcher</h3>
-      <p class="text-xs text-slate-400 mb-6">Quick launch your tools directly</p>
+      <p class="text-xs text-slate-400 mb-6">Click below to open your tools</p>
       
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="https://d1998pandey.github.io/smart-teaching-board/" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs flex items-center gap-2 hover:bg-emerald-400 transition">
-          <i data-lucide="pen-tool" class="w-4 h-4"></i> Smart Teaching Board
-        </a>
-        <a href="https://d1998pandey.github.io/lorentz-force-3d-simulation/" target="_blank" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sky-400 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
-          <i data-lucide="box" class="w-4 h-4"></i> 3D Lorentz Sim
-        </a>
-        <a href="https://d1998pandey.github.io/vector-lab-simulation/" target="_blank" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-indigo-300 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
-          <i data-lucide="compass" class="w-4 h-4"></i> Vector Lab
-        </a>
+        <!-- Buttons protected with secure launch check -->
+        <button onclick="protectedLaunch('https://d1998pandey.github.io/smart-teaching-board/')" class="px-5 py-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-bold text-xs flex items-center gap-2 hover:bg-emerald-500 hover:text-slate-950 transition">
+          <i data-lucide="lock" class="w-3.5 h-3.5"></i> Smart Teaching Board
+        </button>
+
+        <button onclick="protectedLaunch('https://d1998pandey.github.io/lorentz-force-3d-simulation/')" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sky-400 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
+          <i data-lucide="lock" class="w-3.5 h-3.5"></i> 3D Lorentz Sim
+        </button>
+
+        <button onclick="protectedLaunch('https://d1998pandey.github.io/vector-lab-simulation/')" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-indigo-300 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
+          <i data-lucide="lock" class="w-3.5 h-3.5"></i> Vector Lab
+        </button>
       </div>
     </div>
   </section>
+
+  <!-- ================= ACCESS LOCKED MODAL POPUP ================= -->
+  <div id="accessLockedModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="w-full max-w-sm bg-slate-900 border border-amber-500/40 rounded-3xl p-6 text-center shadow-2xl relative">
+      <button onclick="closeLockedModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="lock" class="w-7 h-7"></i>
+      </div>
+
+      <h4 class="text-lg font-bold text-white">Active Subscription Required</h4>
+      <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+        Ye feature keval registered aur subscribed educators ke liye available hai. Kripya pehle ₹1 ka 7-Day trial lein ya login karein.
+      </p>
+
+      <div class="mt-6 space-y-2.5">
+        <button onclick="closeLockedModal(); scrollToPricing();" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
+          <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
+          Activate ₹1 Trial Now
+        </button>
+        <button onclick="closeLockedModal(); openLoginModal();" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700 transition">
+          Already Subscribed? Login Here
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ================= SIMPLE LOGIN MODAL ================= -->
   <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
@@ -300,25 +338,25 @@
 
       <div class="text-center mb-6">
         <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center mx-auto mb-2 border border-indigo-500/30">
-          <i data-lucide="lock" class="w-5 h-5"></i>
+          <i data-lucide="shield-check" class="w-5 h-5"></i>
         </div>
         <h4 class="text-base font-bold text-white">Educator Login</h4>
-        <p class="text-[11px] text-slate-400">Enter your details to access your account</p>
+        <p class="text-[11px] text-slate-400">Enter phone number to access your account</p>
       </div>
 
       <div class="space-y-3">
         <div>
-          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Phone Number or Email</label>
+          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Phone Number</label>
           <input type="text" id="authInput" placeholder="+91 98765 43210" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500">
         </div>
 
-        <button onclick="alert('Firebase Phone OTP flow will trigger here once keys are connected!')" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30">
-          Send Verification OTP
+        <button onclick="mockLoginSuccess()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30">
+          Verify & Sign In
         </button>
       </div>
 
       <div class="mt-4 text-center">
-        <span class="text-[10px] text-slate-500">Secure sign-in powered by Physix Tatvam</span>
+        <span class="text-[10px] text-slate-500">Firebase Phone OTP verification will trigger here</span>
       </div>
     </div>
   </div>
@@ -334,9 +372,69 @@
     </div>
   </footer>
 
+  <!-- ================= CLIENT JAVASCRIPT ================= -->
   <script>
     lucide.createIcons();
 
+    // User Subscription State (Default: false)
+    let isUserSubscribed = false;
+
+    // 1. Interactive Card Selection (Monthly vs Annual)
+    function selectPlan(plan) {
+      const mCard = document.getElementById('monthlyCard');
+      const aCard = document.getElementById('annualCard');
+      const mBadge = document.getElementById('monthlyBadge');
+      const aBadge = document.getElementById('annualBadge');
+      const mTitle = document.getElementById('monthlyTitle');
+      const aTitle = document.getElementById('annualTitle');
+      const mBtn = document.getElementById('monthlyBtn');
+      const aBtn = document.getElementById('annualBtn');
+
+      if (plan === 'monthly') {
+        // Activate Monthly
+        mCard.className = "cursor-pointer rounded-3xl bg-slate-900 border-2 border-indigo-500 p-8 flex flex-col justify-between glow-active relative transition-all duration-300";
+        mBadge.classList.remove('hidden');
+        mTitle.className = "text-xs font-bold uppercase tracking-wider text-indigo-400";
+        mBtn.className = "mt-8 w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2";
+
+        // Deactivate Annual
+        aCard.className = "cursor-pointer rounded-3xl bg-slate-900/60 border-2 border-slate-800 hover:border-slate-700 p-8 flex flex-col justify-between relative transition-all duration-300";
+        aBadge.classList.add('hidden');
+        aTitle.className = "text-xs font-bold uppercase tracking-wider text-slate-400";
+        aBtn.className = "mt-8 w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition border border-slate-700";
+      } else {
+        // Activate Annual
+        aCard.className = "cursor-pointer rounded-3xl bg-slate-900 border-2 border-emerald-500 p-8 flex flex-col justify-between glow-active relative transition-all duration-300";
+        aBadge.classList.remove('hidden');
+        aTitle.className = "text-xs font-bold uppercase tracking-wider text-emerald-400";
+        aBtn.className = "mt-8 w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/20";
+
+        // Deactivate Monthly
+        mCard.className = "cursor-pointer rounded-3xl bg-slate-900/60 border-2 border-slate-800 hover:border-slate-700 p-8 flex flex-col justify-between relative transition-all duration-300";
+        mBadge.classList.add('hidden');
+        mTitle.className = "text-xs font-bold uppercase tracking-wider text-slate-400";
+        mBtn.className = "mt-8 w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition border border-slate-700";
+      }
+    }
+
+    // 2. Access Protection Logic for Launchers
+    function protectedLaunch(targetUrl) {
+      if (isUserSubscribed) {
+        window.open(targetUrl, '_blank');
+      } else {
+        document.getElementById('accessLockedModal').classList.remove('hidden');
+      }
+    }
+
+    function closeLockedModal() {
+      document.getElementById('accessLockedModal').classList.add('hidden');
+    }
+
+    function scrollToPricing() {
+      document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 3. Login Modal Helpers
     function openLoginModal() {
       document.getElementById('loginModal').classList.remove('hidden');
     }
@@ -345,11 +443,25 @@
       document.getElementById('loginModal').classList.add('hidden');
     }
 
+    function mockLoginSuccess() {
+      closeLoginModal();
+      // Demo test toggle: logged in and subscribed
+      isUserSubscribed = true;
+      document.getElementById('userStatusLabel').textContent = "Deepak (Active)";
+      alert('Login Verified! Subscription access unlocked. Ab aap niche diye gaye kisi bhi tool ko launch kar sakte hain.');
+    }
+
+    // 4. Payment Triggers
     function handleSubscribe(type) {
       if(type === 'trial') {
         alert('Initiating Razorpay ₹1 7-Day Trial Authorization...');
+        // Simulating successful payment after Razorpay flow
+        isUserSubscribed = true;
+        document.getElementById('userStatusLabel').textContent = "Deepak (Trial Active)";
       } else {
-        alert('Initiating ₹1,299 Annual Plan Payment...');
+        alert('Initiating ₹1,299 Annual Saver Payment...');
+        isUserSubscribed = true;
+        document.getElementById('userStatusLabel').textContent = "Deepak (Annual Pro)";
       }
     }
   </script>
