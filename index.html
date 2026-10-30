@@ -3,383 +3,354 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Physix Tatvam | Educator Suite & Smart Teaching Board</title>
+  <title>Physix Tatvam | Empowering Physics Educators</title>
   
+  <!-- Tailwind CSS & Lucide Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
           colors: {
-            brand: { 50: '#eef2ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' }
+            brand: { 500: '#6366f1', 600: '#4f46e5' }
           }
         }
       }
     }
   </script>
   <style>
-    .glow-box { box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.25); }
-    .glow-cyan { box-shadow: 0 0 40px -10px rgba(56, 189, 248, 0.25); }
+    .glow-box {
+      box-shadow: 0 0 50px -15px rgba(99, 102, 241, 0.25);
+    }
   </style>
 </head>
-<body class="bg-[#0b0f19] text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+<body class="bg-[#090d16] text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-  <!-- ================= Navigation Bar ================= -->
-  <nav class="sticky top-0 z-40 backdrop-blur-xl bg-[#0b0f19]/85 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        
-        <!-- Logo -->
-        <a href="#" class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-sky-500 to-emerald-400 p-[2px]">
-            <div class="w-full h-full bg-[#0b0f19] rounded-[10px] flex items-center justify-center">
-              <i data-lucide="atom" class="w-6 h-6 text-sky-400"></i>
-            </div>
+  <!-- ================= TOP NAVIGATION ================= -->
+  <nav class="sticky top-0 z-50 backdrop-blur-xl bg-[#090d16]/85 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-sky-500 to-emerald-400 p-[2px]">
+          <div class="w-full h-full bg-[#090d16] rounded-[10px] flex items-center justify-center">
+            <i data-lucide="atom" class="w-6 h-6 text-sky-400"></i>
           </div>
-          <div>
-            <span class="text-xl font-bold bg-gradient-to-r from-sky-400 via-indigo-300 to-white bg-clip-text text-transparent">
-              Physix Tatvam
-            </span>
-            <span class="text-[10px] font-medium tracking-widest text-slate-400 block -mt-1 uppercase">Educator Portal</span>
-          </div>
-        </a>
-
-        <!-- Portal Selector: Teacher (Active) vs Student (Coming Soon) -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-1 flex items-center text-xs font-semibold">
-          <button class="px-3.5 py-1.5 rounded-lg bg-indigo-600 text-white shadow-sm flex items-center gap-1.5 cursor-default">
-            <i data-lucide="presentation" class="w-3.5 h-3.5"></i> For Teachers
-          </button>
-          <button onclick="alert('Student Batches & Video Course Hub will be available in next update!')" class="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-400 transition flex items-center gap-1.5">
-            <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> For Students
-            <span class="text-[9px] bg-slate-800 text-amber-400 px-1.5 py-0.5 rounded border border-amber-500/20">Soon</span>
-          </button>
         </div>
-
-        <!-- Links & Login Button -->
-        <div class="flex items-center gap-3">
-          <a href="#services" class="hidden md:inline-block text-xs font-medium text-slate-300 hover:text-sky-400 transition">Services</a>
-          <a href="#demo-video" class="hidden md:inline-block text-xs font-medium text-slate-300 hover:text-sky-400 transition">Demo Video</a>
-          <a href="#pricing" class="hidden md:inline-block text-xs font-medium text-slate-300 hover:text-sky-400 transition">Plans</a>
-          
-          <button onclick="openLoginModal()" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 border border-slate-700 hover:border-indigo-500 text-white transition shadow-sm">
-            <i data-lucide="log-in" class="w-3.5 h-3.5 text-sky-400"></i>
-            Login / Signup
-          </button>
+        <div>
+          <span class="text-xl font-bold bg-gradient-to-r from-sky-400 via-indigo-300 to-white bg-clip-text text-transparent">
+            Physix Tatvam
+          </span>
+          <span class="block text-[10px] font-semibold tracking-wider text-slate-400 uppercase -mt-0.5">Educator Portal</span>
         </div>
+      </a>
 
+      <!-- Center: Role Tabs -->
+      <div class="flex items-center bg-slate-900/90 border border-slate-800 p-1 rounded-xl">
+        <button class="px-4 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-semibold flex items-center gap-1.5 shadow">
+          <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> For Teachers
+        </button>
+        <button class="px-4 py-1.5 rounded-lg text-slate-500 text-xs font-medium flex items-center gap-1.5 cursor-not-allowed opacity-75" title="Student Batches Coming Soon">
+          <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Students
+          <span class="text-[9px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded ml-1">Soon</span>
+        </button>
       </div>
+
+      <!-- Right: Navigation Links & Login Button -->
+      <div class="flex items-center gap-4">
+        <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
+          <a href="#services" class="hover:text-sky-400 transition">Services</a>
+          <a href="#demo-video" class="hover:text-sky-400 transition">Board Demo</a>
+          <a href="#pricing" class="hover:text-sky-400 transition">Plans</a>
+        </div>
+        
+        <button onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-xs font-semibold text-white flex items-center gap-2 transition">
+          <i data-lucide="log-in" class="w-3.5 h-3.5 text-sky-400"></i>
+          Login / Register
+        </button>
+      </div>
+
     </div>
   </nav>
 
-  <!-- ================= Hero Section (Teacher Focused) ================= -->
-  <section class="relative pt-16 pb-14 md:pt-24 md:pb-20 overflow-hidden border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <!-- ================= HERO SECTION ================= -->
+  <header class="relative pt-16 pb-14 overflow-hidden border-b border-slate-800/80">
+    <div class="max-w-5xl mx-auto px-4 text-center">
       
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold mb-6">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        Built Specially For Physics Educators, Coaching Institutes & Creators
+        Built for Modern Physics Educators & Coaching Institutes
       </div>
 
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
-        Modernize Your Physics Lectures With <br>
-        <span class="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-          Interactive Smart Board & 3D Simulations
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight">
+        Teach Physics Visually. <br>
+        <span class="bg-gradient-to-r from-sky-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent">
+          Smart Whiteboard + Interactive 3D Labs
         </span>
       </h1>
 
       <p class="mt-5 text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Say goodbye to static diagrams. Sketch complex vector mechanics with zero lag on our smart board and demonstrate live 3D electric & magnetic field trajectories in real-time.
+        Explain complex derivations in seconds. Launch live simulations directly inside your lectures and sketch seamlessly with zero tablet latency.
       </p>
 
-      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#pricing" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition">
-          <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
-          Start 7-Day Trial for ₹1 Only
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href="#pricing" class="px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center gap-2">
+          Start 7-Day Trial (₹1 Only) <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </a>
-        <a href="#demo-video" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-600 text-slate-200 font-semibold text-xs flex items-center justify-center gap-2 transition">
+        <a href="#demo-video" class="px-6 py-3.5 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-slate-200 font-semibold text-xs transition flex items-center gap-2">
           <i data-lucide="play-circle" class="w-4 h-4 text-rose-500"></i>
-          Watch Smart Board Demo
+          Watch Smartboard in Action
         </a>
-      </div>
-
-      <!-- Quick Trust Badges -->
-      <div class="mt-12 flex flex-wrap justify-center gap-6 text-xs text-slate-400 border-t border-slate-800/60 pt-6">
-        <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> XP-Pen & Wacom Tablet Support</span>
-        <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> No Heavy Software Installation Needed</span>
-        <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 100% In-Browser 60 FPS Engine</span>
       </div>
 
     </div>
-  </section>
+  </header>
 
-  <!-- ================= Services & Teacher Offerings ================= -->
-  <section id="services" class="py-16 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-800">
-    <div class="text-center max-w-2xl mx-auto mb-14">
+  <!-- ================= SERVICES FOR TEACHERS ================= -->
+  <section id="services" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-800/80">
+    <div class="text-center max-w-2xl mx-auto mb-12">
       <span class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">
-        Teacher Services
+        Educator Ecosystem
       </span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3">What You Get With Physix Tatvam</h2>
-      <p class="text-slate-400 text-xs sm:text-sm mt-2">Everything you need to deliver high-impact physics classes online or offline.</p>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">What You Get With Physix Tatvam</h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-2">Everything required to deliver high-retention online & offline physics lectures.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <!-- Service 1: Smart Teaching Board -->
-      <div class="rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-emerald-500/50 p-6 flex flex-col justify-between transition group">
-        <div>
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-105 transition">
-            <i data-lucide="pen-tool" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white">Smart Teaching Board</h3>
-          <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-            Ultra-fast responsive digital blackboard designed specifically for physics teachers. Includes Cartesian grid snap, vector line tools, coordinate axes, and eraser gestures.
-          </p>
+      <div class="bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 rounded-2xl p-6 transition">
+        <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-5">
+          <i data-lucide="pen-tool" class="w-5 h-5"></i>
         </div>
-        <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-emerald-400 font-semibold flex items-center justify-between">
-          <span>Digital Tablet Ready</span>
-          <i data-lucide="check" class="w-4 h-4"></i>
-        </div>
+        <h3 class="text-lg font-bold text-white">Smart Teaching Board</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+          Custom built for graphic tablets (XP-Pen, Wacom). Pre-built coordinate axes, circle/vector snappers, infinite canvas, and one-click note export.
+        </p>
+        <ul class="mt-4 space-y-1.5 text-xs text-slate-300">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Zero-latency handwriting</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Instant PDF/PNG slide saving</li>
+        </ul>
       </div>
 
-      <!-- Service 2: Interactive 3D Simulations Suite -->
-      <div class="rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-sky-500/50 p-6 flex flex-col justify-between transition group">
-        <div>
-          <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mb-5 group-hover:scale-105 transition">
-            <i data-lucide="atom" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white">Classroom 3D Simulations</h3>
-          <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-            Directly open Lorentz Force 3D, Dipole Flux maps, Ray Optics with convex lenses, and 3D Cannon projectile setups during your lecture with one click.
-          </p>
+      <!-- Service 2: Interactive Simulations -->
+      <div class="bg-slate-900/80 border border-slate-800 hover:border-sky-500/40 rounded-2xl p-6 transition">
+        <div class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mb-5">
+          <i data-lucide="atom" class="w-5 h-5"></i>
         </div>
-        <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-sky-400 font-semibold flex items-center justify-between">
-          <span>WebGL Powered</span>
-          <i data-lucide="check" class="w-4 h-4"></i>
-        </div>
+        <h3 class="text-lg font-bold text-white">Interactive Physics Sims</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+          Embed real-time parameter controls right inside your lectures. Show Lorentz Force 3D trajectories, Dipole contour maps, and Convex Lens ray diagrams live.
+        </p>
+        <ul class="mt-4 space-y-1.5 text-xs text-slate-300">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Real-time 3D vector rotation</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Covers Kinematics to Electrodynamics</li>
+        </ul>
       </div>
 
-      <!-- Service 3: High-Res Notes & Lecture Export -->
-      <div class="rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-indigo-500/50 p-6 flex flex-col justify-between transition group">
-        <div>
-          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mb-5 group-hover:scale-105 transition">
-            <i data-lucide="download" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white">Instant Export & OBS Setup</h3>
-          <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-            Export high-definition PNG/PDF notes of your board derivations to share with students directly after class. Seamlessly integrates with OBS Studio for YouTube recording.
-          </p>
+      <!-- Service 3: Vector & Mathematics Lab -->
+      <div class="bg-slate-900/80 border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-6 transition">
+        <div class="w-11 h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mb-5">
+          <i data-lucide="compass" class="w-5 h-5"></i>
         </div>
-        <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-indigo-400 font-semibold flex items-center justify-between">
-          <span>Lossless Quality</span>
-          <i data-lucide="check" class="w-4 h-4"></i>
-        </div>
+        <h3 class="text-lg font-bold text-white">Vector & Geometry Tools</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+          Drag and resolve vectors into orthogonal components in real time. Perfect for teaching Free Body Diagrams (FBD) and cross products visually.
+        </p>
+        <ul class="mt-4 space-y-1.5 text-xs text-slate-300">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> Real-time dot/cross calculations</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> Dynamic angle resolution overlays</li>
+        </ul>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= YouTube Ad / Smart Board Demo Space ================= -->
-  <section id="demo-video" class="py-16 md:py-20 bg-[#0d1220] border-b border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <!-- ================= YOUTUBE VIDEO AD / DEMO SECTION ================= -->
+  <section id="demo-video" class="py-16 bg-[#0c1220] border-b border-slate-800/80">
+    <div class="max-w-5xl mx-auto px-4 text-center">
       
       <span class="text-xs font-bold uppercase tracking-wider text-rose-400 bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/20">
-        Live Video Demo
+        Demo & Video Showcase
       </span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3">Watch The Smart Board In Action</h2>
-      <p class="text-slate-400 text-xs sm:text-sm mt-2 max-w-xl mx-auto">
-        See how effortlessly you can teach derivations, plot coordinates, and switch between simulations in live classes.
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">See How Physix Tatvam Transforms Teaching</h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-xl mx-auto">
+        Watch this quick walkthrough demonstrating how to conduct a live lecture using the smart whiteboard and 3D simulations.
       </p>
 
-      <!-- Video Player Container (YouTube Embed space) -->
-      <div class="mt-8 rounded-3xl bg-slate-950 border border-slate-700/80 p-2 sm:p-4 glow-box overflow-hidden">
-        <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 flex items-center justify-center">
-          
-          <!-- REPLACE 'dQw4w9WgXcQ' with your actual YouTube Video ID once your ad is recorded -->
-          <iframe 
-            class="w-full h-full" 
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" 
-            title="Physix Tatvam Smart Teaching Board Demo" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-
-        </div>
+      <!-- Video Container -->
+      <div class="mt-8 relative aspect-video w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-slate-800 bg-slate-950 shadow-2xl glow-box">
+        <!-- REPLACE 'dQw4w9WgXcQ' with your actual YouTube Video ID -->
+        <iframe 
+          class="w-full h-full"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" 
+          title="Smartboard Demo Video" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
       </div>
 
-      <div class="mt-6 flex items-center justify-center gap-3">
-        <a href="https://d1998pandey.github.io/smart-teaching-board/" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs inline-flex items-center gap-2 transition">
-          <i data-lucide="external-link" class="w-4 h-4"></i> Try Demo Board Directly
-        </a>
+      <div class="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400">
+        <i data-lucide="youtube" class="w-4 h-4 text-rose-500"></i>
+        <span>Subscribe to <strong>Physix Tatvam</strong> on YouTube for full simulation tutorials.</span>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= Subscription Plans ================= -->
-  <section id="pricing" class="py-16 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <span class="text-xs font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
-        Educator Pricing
+  <!-- ================= PRICING & TRIAL PLANS ================= -->
+  <section id="pricing" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-xl mx-auto mb-12">
+      <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+        Simple Pricing
       </span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Transparent Plans For Teachers</h2>
-      <p class="text-slate-400 text-xs sm:text-sm mt-2">Start with a 7-day trial at just ₹1. Upgrade to monthly or annual only if you love it.</p>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Start with a 7-Day Trial for Just ₹1</h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-2">Test all features in your live lectures before deciding. Cancel anytime.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
 
-      <!-- Plan 1: 7-Day Trial + Monthly Subscription -->
-      <div class="rounded-3xl bg-slate-900 border-2 border-indigo-500 p-8 flex flex-col justify-between glow-box relative">
+      <!-- Plan 1: 7-Day Trial into Monthly -->
+      <div class="rounded-3xl bg-slate-900 border-2 border-indigo-500/60 p-8 flex flex-col justify-between glow-box relative">
         <div class="absolute -top-3 right-6 bg-gradient-to-r from-indigo-500 to-sky-500 text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow">
           Most Popular
         </div>
 
         <div>
-          <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded border border-emerald-500/20 uppercase">
-            7 Days Trial Included
-          </span>
-          <h3 class="text-2xl font-bold text-white mt-3">Teacher Monthly Pass</h3>
-          <p class="text-slate-400 text-xs mt-1">Full access to Smart Board + all physics simulation modules.</p>
-
-          <div class="mt-6 flex items-baseline gap-2">
-            <span class="text-4xl font-black text-white">₹1</span>
-            <span class="text-xs text-emerald-400 font-semibold">for first 7 days</span>
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Educator Monthly Pass</span>
+          <div class="mt-4 flex items-baseline gap-2">
+            <span class="text-4xl font-extrabold text-white">₹1</span>
+            <span class="text-xs text-slate-400">for first 7 days</span>
           </div>
-          <p class="text-xs text-slate-500 mt-1">Then renews at <strong>₹149 / month</strong> (cancel anytime)</p>
+          <p class="text-xs text-slate-400 mt-1">Then ₹149 / month. Instant access to all teaching tools.</p>
 
-          <ul class="mt-6 space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
-            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Smart Teaching Board with full toolbar</li>
-            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Lorentz Force 3D & Dipole Simulators</li>
-            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Ray Optics & Vector Lab integration</li>
-            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> HD derivation notes export</li>
+          <ul class="mt-6 space-y-3 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Unlimited Smart Teaching Board Access</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> All 3D/2D Physics Simulations</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> High-Resolution Vector & Note Exports</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Commercial usage in lectures permitted</li>
           </ul>
         </div>
 
-        <button onclick="triggerPayment('Monthly Trial', 1)" class="mt-8 w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
+        <button onclick="handleSubscribe('trial')" class="mt-8 w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
           <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
-          Start ₹1 Trial Now
+          Activate ₹1 Trial Now
         </button>
       </div>
 
-      <!-- Plan 2: Annual Educator Membership -->
+      <!-- Plan 2: Annual Saver Pass -->
       <div class="rounded-3xl bg-slate-900/60 border border-slate-800 p-8 flex flex-col justify-between">
         <div>
-          <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded border border-amber-500/20 uppercase">
-            Best Value Saver
-          </span>
-          <h3 class="text-2xl font-bold text-white mt-3">Annual Pro License</h3>
-          <p class="text-slate-400 text-xs mt-1">For serious tutors, schools, and coaching faculties.</p>
-
-          <div class="mt-6 flex items-baseline gap-2">
-            <span class="text-4xl font-black text-white">₹1,299</span>
-            <span class="text-xs text-slate-400">/ full year</span>
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Annual Saver Pass</span>
+          <div class="mt-4 flex items-baseline gap-2">
+            <span class="text-4xl font-extrabold text-white">₹1,299</span>
+            <span class="text-xs text-slate-500">/ year</span>
           </div>
-          <p class="text-xs text-slate-500 mt-1">Save over 30% compared to monthly renewal</p>
+          <p class="text-xs text-slate-400 mt-1">Save over 25% with annual one-time billing.</p>
 
-          <ul class="mt-6 space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-6">
-            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Everything in monthly pass</li>
-            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Priority access to upcoming simulations</li>
-            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Dedicated teacher feature requests</li>
+          <ul class="mt-6 space-y-3 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Everything in the Monthly Plan</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> 1 Full Year Uninterrupted Access</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Priority feature requests for new simulations</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> 1-on-1 teaching board setup support</li>
           </ul>
         </div>
 
-        <button onclick="triggerPayment('Annual Plan', 1299)" class="mt-8 w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition border border-slate-700">
-          Get Annual License
+        <button onclick="handleSubscribe('annual')" class="mt-8 w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition border border-slate-700">
+          Subscribe Annually (₹1,299)
         </button>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= Login / Signup Modal ================= -->
-  <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative">
+  <!-- ================= DIRECT TOOL LAUNCHER (LOGGED-IN PREVIEW) ================= -->
+  <section class="py-12 bg-slate-950 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h3 class="text-lg font-bold text-white mb-2">Live Teaching Launcher</h3>
+      <p class="text-xs text-slate-400 mb-6">Quick launch your tools directly</p>
       
-      <button onclick="closeLoginModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://d1998pandey.github.io/smart-teaching-board/" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs flex items-center gap-2 hover:bg-emerald-400 transition">
+          <i data-lucide="pen-tool" class="w-4 h-4"></i> Smart Teaching Board
+        </a>
+        <a href="https://d1998pandey.github.io/lorentz-force-3d-simulation/" target="_blank" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sky-400 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
+          <i data-lucide="box" class="w-4 h-4"></i> 3D Lorentz Sim
+        </a>
+        <a href="https://d1998pandey.github.io/vector-lab-simulation/" target="_blank" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-indigo-300 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
+          <i data-lucide="compass" class="w-4 h-4"></i> Vector Lab
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SIMPLE LOGIN MODAL ================= -->
+  <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative">
+      <button onclick="closeLoginModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
       <div class="text-center mb-6">
-        <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-sky-400 flex items-center justify-center mx-auto mb-2 border border-indigo-500/30">
-          <i data-lucide="atom" class="w-5 h-5"></i>
+        <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center mx-auto mb-2 border border-indigo-500/30">
+          <i data-lucide="lock" class="w-5 h-5"></i>
         </div>
-        <h3 class="text-lg font-bold text-white">Educator Login</h3>
-        <p class="text-xs text-slate-400">Access your saved settings & board tools</p>
+        <h4 class="text-base font-bold text-white">Educator Login</h4>
+        <p class="text-[11px] text-slate-400">Enter your details to access your account</p>
       </div>
 
-      <!-- Step 1: Input Identifier -->
-      <div id="modalStep1">
-        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Mobile Number / Email</label>
-        <input type="text" id="loginId" placeholder="+91 98765 43210" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 mb-4">
-        
-        <button onclick="requestOtp()" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition">
-          Send OTP
+      <div class="space-y-3">
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Phone Number or Email</label>
+          <input type="text" id="authInput" placeholder="+91 98765 43210" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <button onclick="alert('Firebase Phone OTP flow will trigger here once keys are connected!')" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30">
+          Send Verification OTP
         </button>
       </div>
 
-      <!-- Step 2: OTP Entry -->
-      <div id="modalStep2" class="hidden">
-        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Enter 4-Digit OTP</label>
-        <input type="password" id="otpCode" maxlength="4" placeholder="••••" class="w-full text-center text-lg font-bold bg-slate-950 border border-slate-700 rounded-xl py-2 text-white focus:outline-none focus:border-indigo-500 mb-4">
-        
-        <button onclick="confirmLogin()" class="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition">
-          Verify & Continue
-        </button>
-        <button onclick="resetModalSteps()" class="w-full text-center text-[11px] text-slate-400 hover:underline mt-2">Change Number</button>
+      <div class="mt-4 text-center">
+        <span class="text-[10px] text-slate-500">Secure sign-in powered by Physix Tatvam</span>
       </div>
-
     </div>
   </div>
 
-  <!-- ================= Footer ================= -->
-  <footer class="border-t border-slate-800 bg-[#070b12] py-8 text-slate-400 text-xs">
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-slate-800 bg-[#060910] py-8 text-slate-500 text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <i data-lucide="atom" class="w-4 h-4 text-sky-400"></i>
-        <span class="font-bold text-white">Physix Tatvam</span>
-      </div>
-      <div>
-        &copy; 2026 Physix Tatvam. Dedicated workspace for physics educators.
+      <div>&copy; 2026 Physix Tatvam. All Rights Reserved.</div>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-slate-300">Privacy Policy</a>
+        <a href="#" class="hover:text-slate-300">Terms of Service</a>
       </div>
     </div>
   </footer>
 
-  <!-- ================= Scripts ================= -->
   <script>
     lucide.createIcons();
 
-    // Modal Handlers
-    function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
-    function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
-
-    function requestOtp() {
-      const val = document.getElementById('loginId').value.trim();
-      if(!val) return alert('Please enter your mobile number or email');
-      document.getElementById('modalStep1').classList.add('hidden');
-      document.getElementById('modalStep2').classList.remove('hidden');
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.remove('hidden');
     }
 
-    function resetModalSteps() {
-      document.getElementById('modalStep2').classList.add('hidden');
-      document.getElementById('modalStep1').classList.remove('hidden');
+    function closeLoginModal() {
+      document.getElementById('loginModal').classList.add('hidden');
     }
 
-    function confirmLogin() {
-      const otp = document.getElementById('otpCode').value;
-      if(otp.length < 4) return alert('Please enter 4-digit OTP');
-      alert('Login successful! Welcome to Physix Tatvam Teacher Suite.');
-      closeLoginModal();
-    }
-
-    function triggerPayment(planName, amount) {
-      alert(`Initiating Razorpay Subscription for ${planName} (₹${amount}). Payment gateway connects here.`);
+    function handleSubscribe(type) {
+      if(type === 'trial') {
+        alert('Initiating Razorpay ₹1 7-Day Trial Authorization...');
+      } else {
+        alert('Initiating ₹1,299 Annual Plan Payment...');
+      }
     }
   </script>
 </body>
