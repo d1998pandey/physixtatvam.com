@@ -3,33 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physix Tatvam | Empowering Physics Educators</title>
   
-  <!-- SEO Meta Tags for Google Search Results -->
-  <title>Physix Tatvam | Empowering Physics Educators with Smartboard & 3D Sims</title>
-  <meta name="description" content="Physix Tatvam is an educational technology platform offering high-speed smart teaching whiteboard, 3D interactive physics simulations, and educator tools.">
-  <meta name="keywords" content="Physix Tatvam, Smart Teaching Board, Physics Simulations, 3D Physics Lab, Deepak Pandey">
-  <meta name="author" content="Deepak Pandey">
-
-  <!-- Favicon / Logo for Browser Tab & Google Search Result Snippet -->
-  <link rel="icon" type="image/jpeg" href="https://physixtatvam.com/logo.jpg">
-  <link rel="apple-touch-icon" href="https://physixtatvam.com/logo.jpg">
-
-  <!-- Schema.org Structured Data for Google Knowledge Graph & Brand Card -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Physix Tatvam",
-    "url": "https://physixtatvam.com",
-    "logo": "https://physixtatvam.com/logo.jpg",
-    "description": "Visual Physics Learning, Smart Teaching Whiteboard & 3D Interactive Simulations for Educators and Students.",
-    "founder": {
-      "@type": "Person",
-      "name": "Deepak Pandey"
-    }
-  }
-  </script>
-
   <!-- Tailwind CSS & Lucide Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -42,26 +17,29 @@
       theme: {
         extend: {
           fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
-          colors: { brand: { 500: '#6366f1', 600: '#4f46e5' } }
+          colors: {
+            brand: { 500: '#6366f1', 600: '#4f46e5' }
+          }
         }
       }
     }
   </script>
   <style>
-    .glow-active { box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.4); }
+    .glow-active {
+      box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.4);
+    }
   </style>
 </head>
 <body class="bg-[#090d16] text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
   <!-- ================= TOP NAVIGATION ================= -->
-  <nav class="sticky top-0 z-40 backdrop-blur-xl bg-[#090d16]/85 border-b border-slate-800/80">
+  <nav class="sticky top-0 z-50 backdrop-blur-xl bg-[#090d16]/85 border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
       
       <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-sky-500 to-emerald-400 p-[2px] overflow-hidden">
-          <img src="https://physixtatvam.com/logo.jpg" alt="Physix Tatvam Logo" class="w-full h-full object-cover rounded-[10px]" onerror="this.src=''; this.className='hidden'; document.getElementById('fallbackLogoIcon').classList.remove('hidden');">
-          <div id="fallbackLogoIcon" class="hidden w-full h-full bg-[#090d16] rounded-[10px] flex items-center justify-center">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-sky-500 to-emerald-400 p-[2px]">
+          <div class="w-full h-full bg-[#090d16] rounded-[10px] flex items-center justify-center">
             <i data-lucide="atom" class="w-6 h-6 text-sky-400"></i>
           </div>
         </div>
@@ -84,45 +62,18 @@
         </button>
       </div>
 
-      <!-- Right: Navigation Links, Login & User Menu -->
-      <div class="flex items-center gap-3">
-        <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300 mr-2">
+      <!-- Right: Navigation Links & Login Button -->
+      <div class="flex items-center gap-4">
+        <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
           <a href="#services" class="hover:text-sky-400 transition">Services</a>
           <a href="#demo-video" class="hover:text-sky-400 transition">Board Demo</a>
           <a href="#pricing" class="hover:text-sky-400 transition">Plans</a>
         </div>
-
-        <!-- Help Button -->
-        <button onclick="openModal('helpModal')" title="Help & Support" class="p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-sky-400 transition">
-          <i data-lucide="help-circle" class="w-4 h-4"></i>
+        
+        <button onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-xs font-semibold text-white flex items-center gap-2 transition">
+          <i data-lucide="log-in" class="w-3.5 h-3.5 text-sky-400"></i>
+          <span id="userStatusLabel">Login / Register</span>
         </button>
-
-        <!-- User Profile Dropdown Menu Trigger -->
-        <div class="relative">
-          <button onclick="toggleDropdown()" class="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-xs font-semibold text-white transition">
-            <img id="navAvatar" src="https://physixtatvam.com/logo.jpg" class="w-6 h-6 rounded-lg object-cover border border-sky-400/40" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces'">
-            <span id="navUserName">Educator</span>
-            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i>
-          </button>
-
-          <!-- Dropdown List -->
-          <div id="userDropdown" class="hidden absolute right-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl py-2 z-50">
-            <button onclick="openModal('profileModal'); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-slate-300 hover:bg-slate-800 hover:text-white flex items-center gap-2">
-              <i data-lucide="user" class="w-3.5 h-3.5 text-sky-400"></i> Edit Profile
-            </button>
-            <button onclick="openModal('helpModal'); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-slate-300 hover:bg-slate-800 hover:text-white flex items-center gap-2">
-              <i data-lucide="life-buoy" class="w-3.5 h-3.5 text-emerald-400"></i> Help & Support
-            </button>
-            <button onclick="openModal('privacyModal'); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-slate-300 hover:bg-slate-800 hover:text-white flex items-center gap-2">
-              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-400"></i> Privacy Policy
-            </button>
-            <div class="border-t border-slate-800 my-1"></div>
-            <button onclick="openLoginModal(); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-indigo-400 hover:bg-slate-800 flex items-center gap-2 font-semibold">
-              <i data-lucide="log-in" class="w-3.5 h-3.5"></i> Login / Register
-            </button>
-          </div>
-        </div>
-
       </div>
 
     </div>
@@ -131,6 +82,7 @@
   <!-- ================= HERO SECTION ================= -->
   <header class="relative pt-16 pb-14 overflow-hidden border-b border-slate-800/80">
     <div class="max-w-5xl mx-auto px-4 text-center">
+      
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold mb-6">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         Built for Modern Physics Educators & Coaching Institutes
@@ -156,6 +108,7 @@
           Watch Smartboard in Action
         </a>
       </div>
+
     </div>
   </header>
 
@@ -170,6 +123,8 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Service 1: Smart Teaching Board -->
       <div class="bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 rounded-2xl p-6 transition">
         <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-5">
           <i data-lucide="pen-tool" class="w-5 h-5"></i>
@@ -178,8 +133,13 @@
         <p class="text-xs text-slate-400 mt-2 leading-relaxed">
           Custom built for graphic tablets (XP-Pen, Wacom). Pre-built coordinate axes, circle/vector snappers, infinite canvas, and one-click note export.
         </p>
+        <ul class="mt-4 space-y-1.5 text-xs text-slate-300">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Zero-latency handwriting</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Instant PDF/PNG slide saving</li>
+        </ul>
       </div>
 
+      <!-- Service 2: Interactive Simulations -->
       <div class="bg-slate-900/80 border border-slate-800 hover:border-sky-500/40 rounded-2xl p-6 transition">
         <div class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mb-5">
           <i data-lucide="atom" class="w-5 h-5"></i>
@@ -188,8 +148,13 @@
         <p class="text-xs text-slate-400 mt-2 leading-relaxed">
           Embed real-time parameter controls right inside your lectures. Show Lorentz Force 3D trajectories, Dipole contour maps, and Convex Lens ray diagrams live.
         </p>
+        <ul class="mt-4 space-y-1.5 text-xs text-slate-300">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Real-time 3D vector rotation</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Covers Kinematics to Electrodynamics</li>
+        </ul>
       </div>
 
+      <!-- Service 3: Vector & Mathematics Lab -->
       <div class="bg-slate-900/80 border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-6 transition">
         <div class="w-11 h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mb-5">
           <i data-lucide="compass" class="w-5 h-5"></i>
@@ -198,13 +163,19 @@
         <p class="text-xs text-slate-400 mt-2 leading-relaxed">
           Drag and resolve vectors into orthogonal components in real time. Perfect for teaching Free Body Diagrams (FBD) and cross products visually.
         </p>
+        <ul class="mt-4 space-y-1.5 text-xs text-slate-300">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> Real-time dot/cross calculations</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> Dynamic angle resolution overlays</li>
+        </ul>
       </div>
+
     </div>
   </section>
 
-  <!-- ================= YOUTUBE VIDEO SHOWCASE ================= -->
+  <!-- ================= YOUTUBE VIDEO AD / DEMO SECTION ================= -->
   <section id="demo-video" class="py-16 bg-[#0c1220] border-b border-slate-800/80">
     <div class="max-w-5xl mx-auto px-4 text-center">
+      
       <span class="text-xs font-bold uppercase tracking-wider text-rose-400 bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/20">
         Demo & Video Showcase
       </span>
@@ -214,6 +185,7 @@
       </p>
 
       <div class="mt-8 relative aspect-video w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-slate-800 bg-slate-950 shadow-2xl">
+        <!-- Replace 'dQw4w9WgXcQ' with your actual YouTube Video ID -->
         <iframe 
           class="w-full h-full"
           src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" 
@@ -223,10 +195,16 @@
           allowfullscreen>
         </iframe>
       </div>
+
+      <div class="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400">
+        <i data-lucide="youtube" class="w-4 h-4 text-rose-500"></i>
+        <span>Subscribe to <strong>Physix Tatvam</strong> on YouTube for full simulation tutorials.</span>
+      </div>
+
     </div>
   </section>
 
-  <!-- ================= PRICING & TRIAL PLANS ================= -->
+  <!-- ================= PRICING & INTERACTIVE TRIAL PLANS ================= -->
   <section id="pricing" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-xl mx-auto mb-12">
       <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
@@ -237,11 +215,13 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-      <!-- Plan 1: Monthly -->
+
+      <!-- Plan 1: Monthly Card (Clickable) -->
       <div id="monthlyCard" onclick="selectPlan('monthly')" class="cursor-pointer rounded-3xl bg-slate-900 border-2 border-indigo-500 p-8 flex flex-col justify-between glow-active relative transition-all duration-300">
         <div id="monthlyBadge" class="absolute -top-3 right-6 bg-gradient-to-r from-indigo-500 to-sky-500 text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow">
           Selected
         </div>
+
         <div>
           <span id="monthlyTitle" class="text-xs font-bold uppercase tracking-wider text-indigo-400">Educator Monthly Pass</span>
           <div class="mt-4 flex items-baseline gap-2">
@@ -249,22 +229,27 @@
             <span class="text-xs text-slate-400">for first 7 days</span>
           </div>
           <p class="text-xs text-slate-400 mt-1">Then ₹149 / month. Instant access to all teaching tools.</p>
+
           <ul class="mt-6 space-y-3 text-xs text-slate-300">
             <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Unlimited Smart Teaching Board Access</li>
             <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> All 3D/2D Physics Simulations</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> High-Resolution Vector & Note Exports</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Commercial usage in lectures permitted</li>
           </ul>
         </div>
+
         <button id="monthlyBtn" onclick="event.stopPropagation(); handleSubscribe('trial')" class="mt-8 w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
           <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
           Activate ₹1 Trial Now
         </button>
       </div>
 
-      <!-- Plan 2: Annual -->
+      <!-- Plan 2: Annual Card (Clickable) -->
       <div id="annualCard" onclick="selectPlan('annual')" class="cursor-pointer rounded-3xl bg-slate-900/60 border-2 border-slate-800 hover:border-slate-700 p-8 flex flex-col justify-between relative transition-all duration-300">
         <div id="annualBadge" class="hidden absolute -top-3 right-6 bg-gradient-to-r from-emerald-500 to-sky-500 text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow">
           Best Value (Save 25%)
         </div>
+
         <div>
           <span id="annualTitle" class="text-xs font-bold uppercase tracking-wider text-slate-400">Annual Saver Pass</span>
           <div class="mt-4 flex items-baseline gap-2">
@@ -272,15 +257,20 @@
             <span class="text-xs text-slate-500">/ year</span>
           </div>
           <p class="text-xs text-slate-400 mt-1">Save over 25% with annual one-time billing.</p>
+
           <ul class="mt-6 space-y-3 text-xs text-slate-300">
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Everything in Monthly Plan</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Everything in the Monthly Plan</li>
             <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> 1 Full Year Uninterrupted Access</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Priority feature requests for new simulations</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> 1-on-1 teaching board setup support</li>
           </ul>
         </div>
+
         <button id="annualBtn" onclick="event.stopPropagation(); handleSubscribe('annual')" class="mt-8 w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition border border-slate-700">
           Subscribe Annually (₹1,299)
         </button>
       </div>
+
     </div>
   </section>
 
@@ -295,12 +285,15 @@
       <p class="text-xs text-slate-400 mb-6">Click below to open your tools</p>
       
       <div class="flex flex-wrap justify-center gap-4">
+        <!-- Buttons protected with secure launch check -->
         <button onclick="protectedLaunch('https://d1998pandey.github.io/smart-teaching-board/')" class="px-5 py-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-bold text-xs flex items-center gap-2 hover:bg-emerald-500 hover:text-slate-950 transition">
           <i data-lucide="lock" class="w-3.5 h-3.5"></i> Smart Teaching Board
         </button>
+
         <button onclick="protectedLaunch('https://d1998pandey.github.io/lorentz-force-3d-simulation/')" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sky-400 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
           <i data-lucide="lock" class="w-3.5 h-3.5"></i> 3D Lorentz Sim
         </button>
+
         <button onclick="protectedLaunch('https://d1998pandey.github.io/vector-lab-simulation/')" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-indigo-300 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
           <i data-lucide="lock" class="w-3.5 h-3.5"></i> Vector Lab
         </button>
@@ -308,117 +301,10 @@
     </div>
   </section>
 
-  <!-- ================= 1. PROFILE EDIT MODAL ================= -->
-  <div id="profileModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-        <h3 class="text-base font-bold text-white">Edit Profile & Account</h3>
-        <button onclick="closeModal('profileModal')" class="text-slate-400 hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <div class="mt-6 flex flex-col items-center">
-        <div class="relative group">
-          <img id="profilePreview" src="https://physixtatvam.com/logo.jpg" class="w-20 h-20 rounded-2xl object-cover border-2 border-indigo-500" alt="DP" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&h=120&fit=crop&crop=faces'">
-          <label for="dpUpload" class="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 cursor-pointer transition">
-            <i data-lucide="camera" class="w-6 h-6 text-white"></i>
-          </label>
-          <input type="file" id="dpUpload" accept="image/*" class="hidden" onchange="handleDpUpload(event)">
-        </div>
-        <span class="text-[11px] text-slate-500 mt-2">Click image to upload new photo</span>
-      </div>
-
-      <div class="mt-6 space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Display Name</label>
-          <input type="text" id="inputProfileName" value="Deepak Pandey" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Registered Phone / Email</label>
-          <input type="text" id="inputProfileContact" value="+91 98765 43210" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500">
-        </div>
-      </div>
-
-      <div class="mt-6 flex justify-end gap-3">
-        <button onclick="closeModal('profileModal')" class="px-4 py-2 text-xs text-slate-400 hover:text-white">Cancel</button>
-        <button onclick="saveProfile()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs">Save Changes</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= 2. HELP & SUPPORT MODAL ================= -->
-  <div id="helpModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-        <div class="flex items-center gap-2">
-          <i data-lucide="life-buoy" class="w-5 h-5 text-emerald-400"></i>
-          <h3 class="text-base font-bold text-white">Help & Educator Support</h3>
-        </div>
-        <button onclick="closeModal('helpModal')" class="text-slate-400 hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <div class="mt-5 space-y-3">
-        <a href="https://wa.me/919876543210" target="_blank" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-emerald-500/40 flex items-center justify-between transition">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-              <i data-lucide="message-circle" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <h5 class="text-xs font-bold text-white">WhatsApp Direct Help</h5>
-              <p class="text-[11px] text-slate-500">Instant setup assistance for teaching boards</p>
-            </div>
-          </div>
-          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
-        </a>
-
-        <a href="mailto:support@physixtatvam.com" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/40 flex items-center justify-between transition">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center">
-              <i data-lucide="mail" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <h5 class="text-xs font-bold text-white">Email Desk</h5>
-              <p class="text-[11px] text-slate-500">support@physixtatvam.com</p>
-            </div>
-          </div>
-          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= 3. PRIVACY POLICY MODAL ================= -->
-  <div id="privacyModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-        <div class="flex items-center gap-2">
-          <i data-lucide="shield-check" class="w-5 h-5 text-amber-400"></i>
-          <h3 class="text-base font-bold text-white">Privacy Policy & Terms</h3>
-        </div>
-        <button onclick="closeModal('privacyModal')" class="text-slate-400 hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <div class="mt-4 max-h-80 overflow-y-auto space-y-3 text-xs text-slate-300 pr-2">
-        <p><strong>1. Data Encryption:</strong> Physix Tatvam respects educator privacy. Phone numbers and email addresses collected during login are encrypted and never sold to third parties.</p>
-        <p><strong>2. Whiteboard Security:</strong> Derivations and drawings made on the Smart Teaching Board remain locally stored in your browser session or downloaded directly to your device.</p>
-        <p><strong>3. Subscription & Cancellation:</strong> The 7-Day trial costs ₹1. You can cancel anytime before the 7-day period expires to avoid the monthly renewal charge of ₹149.</p>
-      </div>
-
-      <div class="mt-6 pt-4 border-t border-slate-800 text-right">
-        <button onclick="closeModal('privacyModal')" class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs">Understood</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= 4. ACCESS LOCKED POPUP ================= -->
+  <!-- ================= ACCESS LOCKED MODAL POPUP ================= -->
   <div id="accessLockedModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="w-full max-w-sm bg-slate-900 border border-amber-500/40 rounded-3xl p-6 text-center shadow-2xl relative">
-      <button onclick="closeModal('accessLockedModal')" class="absolute right-4 top-4 text-slate-400 hover:text-white">
+      <button onclick="closeLockedModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
@@ -432,21 +318,21 @@
       </p>
 
       <div class="mt-6 space-y-2.5">
-        <button onclick="closeModal('accessLockedModal'); scrollToPricing();" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
+        <button onclick="closeLockedModal(); scrollToPricing();" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
           <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
           Activate ₹1 Trial Now
         </button>
-        <button onclick="closeModal('accessLockedModal'); openLoginModal();" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700 transition">
+        <button onclick="closeLockedModal(); openLoginModal();" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700 transition">
           Already Subscribed? Login Here
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ================= 5. LOGIN MODAL ================= -->
+  <!-- ================= SIMPLE LOGIN MODAL ================= -->
   <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative">
-      <button onclick="closeModal('loginModal')" class="absolute right-4 top-4 text-slate-400 hover:text-white">
+      <button onclick="closeLoginModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
@@ -468,6 +354,10 @@
           Verify & Sign In
         </button>
       </div>
+
+      <div class="mt-4 text-center">
+        <span class="text-[10px] text-slate-500">Firebase Phone OTP verification will trigger here</span>
+      </div>
     </div>
   </div>
 
@@ -476,29 +366,20 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>&copy; 2026 Physix Tatvam. All Rights Reserved.</div>
       <div class="flex gap-4">
-        <button onclick="openModal('privacyModal')" class="hover:text-slate-300">Privacy Policy</button>
-        <button onclick="openModal('helpModal')" class="hover:text-slate-300">Help & Support</button>
+        <a href="#" class="hover:text-slate-300">Privacy Policy</a>
+        <a href="#" class="hover:text-slate-300">Terms of Service</a>
       </div>
     </div>
   </footer>
 
-  <!-- ================= JAVASCRIPT ================= -->
+  <!-- ================= CLIENT JAVASCRIPT ================= -->
   <script>
     lucide.createIcons();
 
+    // User Subscription State (Default: false)
     let isUserSubscribed = false;
 
-    // Dropdown toggle
-    function toggleDropdown() {
-      document.getElementById('userDropdown').classList.toggle('hidden');
-    }
-
-    // Modal Helpers
-    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-    function openLoginModal() { openModal('loginModal'); }
-
-    // Plan Selection (Monthly vs Annual)
+    // 1. Interactive Card Selection (Monthly vs Annual)
     function selectPlan(plan) {
       const mCard = document.getElementById('monthlyCard');
       const aCard = document.getElementById('annualCard');
@@ -510,21 +391,25 @@
       const aBtn = document.getElementById('annualBtn');
 
       if (plan === 'monthly') {
+        // Activate Monthly
         mCard.className = "cursor-pointer rounded-3xl bg-slate-900 border-2 border-indigo-500 p-8 flex flex-col justify-between glow-active relative transition-all duration-300";
         mBadge.classList.remove('hidden');
         mTitle.className = "text-xs font-bold uppercase tracking-wider text-indigo-400";
         mBtn.className = "mt-8 w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2";
 
+        // Deactivate Annual
         aCard.className = "cursor-pointer rounded-3xl bg-slate-900/60 border-2 border-slate-800 hover:border-slate-700 p-8 flex flex-col justify-between relative transition-all duration-300";
         aBadge.classList.add('hidden');
         aTitle.className = "text-xs font-bold uppercase tracking-wider text-slate-400";
         aBtn.className = "mt-8 w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition border border-slate-700";
       } else {
+        // Activate Annual
         aCard.className = "cursor-pointer rounded-3xl bg-slate-900 border-2 border-emerald-500 p-8 flex flex-col justify-between glow-active relative transition-all duration-300";
         aBadge.classList.remove('hidden');
         aTitle.className = "text-xs font-bold uppercase tracking-wider text-emerald-400";
         aBtn.className = "mt-8 w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/20";
 
+        // Deactivate Monthly
         mCard.className = "cursor-pointer rounded-3xl bg-slate-900/60 border-2 border-slate-800 hover:border-slate-700 p-8 flex flex-col justify-between relative transition-all duration-300";
         mBadge.classList.add('hidden');
         mTitle.className = "text-xs font-bold uppercase tracking-wider text-slate-400";
@@ -532,52 +417,52 @@
       }
     }
 
-    // Access Protection
+    // 2. Access Protection Logic for Launchers
     function protectedLaunch(targetUrl) {
       if (isUserSubscribed) {
         window.open(targetUrl, '_blank');
       } else {
-        openModal('accessLockedModal');
+        document.getElementById('accessLockedModal').classList.remove('hidden');
       }
+    }
+
+    function closeLockedModal() {
+      document.getElementById('accessLockedModal').classList.add('hidden');
     }
 
     function scrollToPricing() {
       document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Profile & DP Edit
-    function saveProfile() {
-      const name = document.getElementById('inputProfileName').value;
-      document.getElementById('navUserName').textContent = name;
-      closeModal('profileModal');
-      alert('Profile details saved successfully!');
+    // 3. Login Modal Helpers
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.remove('hidden');
     }
 
-    function handleDpUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          document.getElementById('profilePreview').src = e.target.result;
-          document.getElementById('navAvatar').src = e.target.result;
-        }
-        reader.readAsDataURL(file);
-      }
+    function closeLoginModal() {
+      document.getElementById('loginModal').classList.add('hidden');
     }
 
-    // Demo Login Simulation
     function mockLoginSuccess() {
-      closeModal('loginModal');
+      closeLoginModal();
+      // Demo test toggle: logged in and subscribed
       isUserSubscribed = true;
-      document.getElementById('navUserName').textContent = "Deepak (Pro)";
-      alert('Login verified! Subscription unlocked. Ab aap bottom ke tools launch kar sakte hain.');
+      document.getElementById('userStatusLabel').textContent = "Deepak (Active)";
+      alert('Login Verified! Subscription access unlocked. Ab aap niche diye gaye kisi bhi tool ko launch kar sakte hain.');
     }
 
-    // Payment Trigger
+    // 4. Payment Triggers
     function handleSubscribe(type) {
-      isUserSubscribed = true;
-      document.getElementById('navUserName').textContent = "Deepak (Active)";
-      alert(type === 'trial' ? '₹1 Trial Activated!' : 'Annual Pass Activated!');
+      if(type === 'trial') {
+        alert('Initiating Razorpay ₹1 7-Day Trial Authorization...');
+        // Simulating successful payment after Razorpay flow
+        isUserSubscribed = true;
+        document.getElementById('userStatusLabel').textContent = "Deepak (Trial Active)";
+      } else {
+        alert('Initiating ₹1,299 Annual Saver Payment...');
+        isUserSubscribed = true;
+        document.getElementById('userStatusLabel').textContent = "Deepak (Annual Pro)";
+      }
     }
   </script>
 </body>
