@@ -10,7 +10,7 @@
   <meta name="keywords" content="Physix Tatvam, Smart Teaching Board, Physics Simulations, 3D Physics Lab, Vector Lab, Educator Toolkit">
   <meta name="author" content="Physix Tatvam">
 
-  <!-- Google Site Verification Tag -->
+  <!-- Google Site Verification Tag Placeholder -->
   <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE">
 
   <!-- Structured Data Schema for Google Sitelinks & Services Search Display -->
@@ -93,7 +93,7 @@
   <nav class="sticky top-0 z-40 backdrop-blur-xl bg-[#090d16]/85 border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
       
-      <!-- Brand Logo -->
+      <!-- Brand Logo / Identity -->
       <a href="#" class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-sky-500 to-emerald-400 p-[2px]">
           <div class="w-full h-full bg-[#090d16] rounded-[10px] flex items-center justify-center">
@@ -154,7 +154,7 @@
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-400"></i> Privacy Policy
             </button>
             <button onclick="openModal('termsModal'); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-slate-300 hover:bg-slate-800 hover:text-white flex items-center gap-2">
-              <i data-lucide="file-text" class="w-3.5 h-3.5 text-indigo-400"></i> Terms & Conditions
+              <i data-lucide="file-text" class="w-3.5 h-3.5 text-indigo-400"></i> Terms of Service
             </button>
             <div class="border-t border-slate-800 my-1"></div>
             <button onclick="openLoginModal(); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-indigo-400 hover:bg-slate-800 flex items-center gap-2 font-semibold">
@@ -419,104 +419,106 @@
     </div>
   </div>
 
-  <!-- ================= 3. PRIVACY POLICY MODAL (DETAILED & COMPLETE) ================= -->
+  <!-- ================= 3. PRIVACY POLICY MODAL (ENGLISH COMPREHENSIVE) ================= -->
   <div id="privacyModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
       <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-        <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2">
           <i data-lucide="shield-check" class="w-5 h-5 text-amber-400"></i>
-          <div>
-            <h3 class="text-base font-bold text-white">Privacy Policy</h3>
-            <span class="text-[10px] text-slate-500">Last updated: November 2026</span>
-          </div>
+          <h3 class="text-base sm:text-lg font-bold text-white">Privacy Policy</h3>
         </div>
         <button onclick="closeModal('privacyModal')" class="text-slate-400 hover:text-white">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <div class="mt-5 max-h-96 overflow-y-auto space-y-4 text-xs text-slate-300 pr-3 leading-relaxed">
+      <div class="mt-4 max-h-96 overflow-y-auto space-y-4 text-xs text-slate-300 pr-2 leading-relaxed">
+        <p class="text-slate-400"><strong>Effective Date:</strong> November 2026</p>
+
         <div>
-          <h4 class="font-bold text-white text-sm mb-1">1. Information We Collect</h4>
-          <p>Hum sirf zaroori account details collect karte hain jaise aapka <strong>Mobile Number</strong>, <strong>Email Address</strong> aur <strong>Name</strong> jab aap login ya subscription initiate karte hain. Hum aapke financial credentials (jaise card CVV ya UPI PIN) kabhi store nahi karte.</p>
+          <h4 class="font-bold text-white text-sm">1. Introduction</h4>
+          <p class="mt-1">Physix Tatvam ("we", "our", or "us") is dedicated to protecting your privacy. This Privacy Policy outlines how your personal information is collected, safeguarded, and handled across physixtatvam.com and its affiliated interactive tools.</p>
         </div>
 
         <div>
-          <h4 class="font-bold text-white text-sm mb-1">2. Smartboard & Simulation Data Privacy</h4>
-          <p>Aap jo bhi diagrams, derivations ya notes <strong>Smart Teaching Board</strong> par draw karte hain, wo client-side aapke browser me hi process hote hain. Aapka handwritten data hamare servers par inspect ya store nahi kiya jata.</p>
+          <h4 class="font-bold text-white text-sm">2. Information We Collect</h4>
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li><strong>Account Data:</strong> When registering, we collect your phone number and/or email address solely for authentication and subscription validation.</li>
+            <li><strong>Usage & Device Metrics:</strong> Non-personally identifiable diagnostic data including browser type, screen resolution, and WebGL rendering capabilities to optimize 3D simulation performance.</li>
+            <li><strong>Smartboard Content:</strong> Derivations, freehand drawings, notes, and vector sketches created on the Smart Teaching Board are processed locally within your browser and are never saved to our servers without your explicit download.</li>
+          </ul>
         </div>
 
         <div>
-          <h4 class="font-bold text-white text-sm mb-1">3. Payment & Transaction Security</h4>
-          <p>Saare payments RBI-compliant PCI-DSS certified payment gateways (Razorpay) ke zariye end-to-end encrypted protocol me process hote hain. Aapka payment data 100% secure rehta hai.</p>
+          <h4 class="font-bold text-white text-sm">3. Payment & Banking Security</h4>
+          <p class="mt-1">All financial transactions, authorization mandates, and card/UPI subscriptions are processed securely through certified payment gateways (e.g., Razorpay) adhering to PCI-DSS Level 1 compliance. Physix Tatvam does not store your credit/debit card credentials, UPI PINs, or CVV numbers on its servers.</p>
         </div>
 
         <div>
-          <h4 class="font-bold text-white text-sm mb-1">4. Data Sharing & Third Parties</h4>
-          <p>Physix Tatvam aapka koi bhi personal data, phone number ya email kisi third-party marketing agency ko sell ya share nahi karta hai.</p>
+          <h4 class="font-bold text-white text-sm">4. Data Sharing & Protection</h4>
+          <p class="mt-1">We enforce a strict zero data-selling policy. Your personal credentials will never be sold, leased, or disclosed to advertising brokers or unauthorized third-party platforms.</p>
         </div>
 
         <div>
-          <h4 class="font-bold text-white text-sm mb-1">5. Contact for Privacy Inquiries</h4>
-          <p>Agar aapko kisi bhi data ya privacy concern par baat karni hai, to aap direct email kar sakte hain: <strong>support@physixtatvam.com</strong>.</p>
+          <h4 class="font-bold text-white text-sm">5. Contact Information</h4>
+          <p class="mt-1">For questions regarding data removal or privacy inquiries, please contact our support desk at <strong class="text-sky-400">support@physixtatvam.com</strong>.</p>
         </div>
       </div>
 
-      <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end">
-        <button onclick="closeModal('privacyModal')" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition">
-          I Understand & Agree
-        </button>
+      <div class="mt-6 pt-4 border-t border-slate-800 text-right">
+        <button onclick="closeModal('privacyModal')" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition">I Understand</button>
       </div>
     </div>
   </div>
 
-  <!-- ================= 4. TERMS & CONDITIONS MODAL (DETAILED & COMPLETE) ================= -->
+  <!-- ================= 4. TERMS OF SERVICE MODAL (ENGLISH COMPREHENSIVE) ================= -->
   <div id="termsModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
       <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-        <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2">
           <i data-lucide="file-text" class="w-5 h-5 text-indigo-400"></i>
-          <div>
-            <h3 class="text-base font-bold text-white">Terms & Conditions of Service</h3>
-            <span class="text-[10px] text-slate-500">Effective from: November 2026</span>
-          </div>
+          <h3 class="text-base sm:text-lg font-bold text-white">Terms of Service</h3>
         </div>
         <button onclick="closeModal('termsModal')" class="text-slate-400 hover:text-white">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <div class="mt-5 max-h-96 overflow-y-auto space-y-4 text-xs text-slate-300 pr-3 leading-relaxed">
+      <div class="mt-4 max-h-96 overflow-y-auto space-y-4 text-xs text-slate-300 pr-2 leading-relaxed">
+        <p class="text-slate-400"><strong>Last Updated:</strong> November 2026</p>
+
         <div>
-          <h4 class="font-bold text-white text-sm mb-1">1. Acceptance of Terms</h4>
-          <p>Physix Tatvam website, Smartboard ya Simulations use karke aap in niyam aur sharton se sehmat hote hain. Agar aap sehmat nahi hain, to platform ka upyog na karein.</p>
+          <h4 class="font-bold text-white text-sm">1. Acceptance of Terms</h4>
+          <p class="mt-1">By accessing or using physixtatvam.com, the Smart Teaching Board, or any associated interactive physics simulation, you confirm your acceptance of these Terms of Service. If you disagree, please refrain from using the platform.</p>
         </div>
 
         <div>
-          <h4 class="font-bold text-white text-sm mb-1">2. 7-Day Trial & Auto-Debit Policy</h4>
-          <p>Educator Monthly Pass me <strong>₹1 deduct</strong> karke 7 dino ka full access trial diya jata hai. 7 dino ke baad plan automatically standard renewal fee <strong>₹149/month</strong> par activate hota hai. User 7-day trial period ke dauran kabhi bhi apna subscription cancel kar sakta hai.</p>
+          <h4 class="font-bold text-white text-sm">2. Commercial & Educator License</h4>
+          <p class="mt-1">Subscribers are granted a non-exclusive, non-transferable license to use the Smart Teaching Board and 3D simulations for both offline and live online lecture delivery (e.g., YouTube lectures, coaching sessions, recorded tutorials). You may not reverse-engineer, redistribute the underlying source code, or resell access to the platform.</p>
         </div>
 
         <div>
-          <h4 class="font-bold text-white text-sm mb-1">3. Commercial Teaching License</h4>
-          <p>Subscribed educators ko Physix Tatvam Smart Teaching Board aur simulations ko apne online YouTube lectures, coaching batch recordings aur live classes me screen-record karke use karne ki poori anumati (license) hai.</p>
+          <h4 class="font-bold text-white text-sm">3. 7-Day Trial & Subscription Billing</h4>
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li><strong>₹1 Trial Authorization:</strong> The 7-day trial activates upon a nominal payment of ₹1. This authorizes access to all tools for 7 days.</li>
+            <li><strong>Recurring Billing:</strong> Unless cancelled prior to the conclusion of the 7-day trial period, the subscription will transition to the recurring educator plan at ₹149 per month.</li>
+            <li><strong>Cancellation:</strong> You may cancel the renewal mandate at any time through your dashboard or by notifying our support desk. Upon cancellation, access remains active until the conclusion of the paid billing cycle.</li>
+          </ul>
         </div>
 
         <div>
-          <h4 class="font-bold text-white text-sm mb-1">4. Intellectual Property & Prohibited Use</h4>
-          <p>Physix Tatvam ke core software code, canvas algorithms ya simulations ko reverse-engineer karna, copy karke re-sell karna ya platform ko DDoS/hack karne ki koshish karna strictly prohibited hai.</p>
+          <h4 class="font-bold text-white text-sm">4. Intellectual Property</h4>
+          <p class="mt-1">The branding, layout, mathematical simulations, and software architecture of Physix Tatvam are the exclusive intellectual property of Physix Tatvam and its founders. Unauthorized cloning or distribution is strictly prohibited.</p>
         </div>
 
         <div>
-          <h4 class="font-bold text-white text-sm mb-1">5. Cancellation & Refund Policy</h4>
-          <p>User apne account settings ya support desk se kabhi bhi subscription cancel kar sakte hain. Cancellation ke baad current billing period khatam hone tak access active rehta hai.</p>
+          <h4 class="font-bold text-white text-sm">5. Service Availability & Support</h4>
+          <p class="mt-1">While we strive for continuous platform availability, temporary downtime may occur for upgrades and optimizations. Support assistance is available via WhatsApp and email during working business hours.</p>
         </div>
       </div>
 
-      <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end">
-        <button onclick="closeModal('termsModal')" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition">
-          Accept Terms
-        </button>
+      <div class="mt-6 pt-4 border-t border-slate-800 text-right">
+        <button onclick="closeModal('termsModal')" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition">Accept Terms</button>
       </div>
     </div>
   </div>
@@ -582,9 +584,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>&copy; 2026 Physix Tatvam. All Rights Reserved.</div>
       <div class="flex gap-4">
-        <button onclick="openModal('privacyModal')" class="hover:text-slate-300 transition">Privacy Policy</button>
-        <button onclick="openModal('termsModal')" class="hover:text-slate-300 transition">Terms of Service</button>
-        <button onclick="openModal('helpModal')" class="hover:text-slate-300 transition">Help & Support</button>
+        <button onclick="openModal('privacyModal')" class="hover:text-slate-300">Privacy Policy</button>
+        <button onclick="openModal('termsModal')" class="hover:text-slate-300">Terms of Service</button>
+        <button onclick="openModal('helpModal')" class="hover:text-slate-300">Help & Support</button>
       </div>
     </div>
   </footer>
