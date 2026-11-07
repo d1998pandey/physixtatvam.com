@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Primary Meta Tags for Google Search Description -->
   <title>Physix Tatvam | Visual Physics Platform & Smart Teaching Board</title>
   <meta name="description" content="Physix Tatvam provides interactive 3D physics simulations, smart teaching whiteboard with zero tablet latency, and visual lecture toolkits for educators and students.">
   <meta name="keywords" content="Physix Tatvam, Smart Teaching Board, Physics Simulations, 3D Physics Lab, Vector Lab, Educator Toolkit">
@@ -13,56 +12,14 @@
   <!-- Google Site Verification Tag Placeholder -->
   <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE">
 
-  <!-- Structured Data Schema for Google Sitelinks & Services Search Display -->
+  <!-- Structured Data Schema for Google Sitelinks -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "name": "Physix Tatvam",
     "url": "https://physixtatvam.com",
-    "description": "Interactive Physics Simulations, Smart Teaching Whiteboard, and Visual Learning Ecosystem for Physics Teachers and Students.",
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Physix Tatvam Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Smart Teaching Board",
-            "description": "Zero latency teaching whiteboard with coordinate grid snapping and export tools for educators.",
-            "url": "https://physixtatvam.com/#services"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "3D Physics Simulations",
-            "description": "Interactive real-time trajectory and field simulations for Mechanics, Optics, and Electrodynamics.",
-            "url": "https://physixtatvam.com/#services"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Vector & Mathematics Lab",
-            "description": "Real-time vector addition, cross product, and orthogonal resolution tools.",
-            "url": "https://physixtatvam.com/#services"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Educator Subscription & 7-Day Trial",
-            "description": "Full access to teaching whiteboard and simulation lab starting with ₹1 for 7 days trial.",
-            "url": "https://physixtatvam.com/#pricing"
-          }
-        }
-      ]
-    }
+    "description": "Interactive Physics Simulations, Smart Teaching Whiteboard, and Visual Learning Ecosystem for Physics Teachers and Students."
   }
   </script>
 
@@ -72,6 +29,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Firebase SDKs (Compat version for pure static hosting without build step) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 
   <script>
     tailwind.config = {
@@ -89,11 +51,11 @@
 </head>
 <body class="bg-[#090d16] text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-  <!-- ================= TOP NAVIGATION ================= -->
+  <!-- ================= TOP NAVIGATION (CLEAN & DIRECT) ================= -->
   <nav class="sticky top-0 z-40 backdrop-blur-xl bg-[#090d16]/85 border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
       
-      <!-- Brand Logo / Identity -->
+      <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-sky-500 to-emerald-400 p-[2px]">
           <div class="w-full h-full bg-[#090d16] rounded-[10px] flex items-center justify-center">
@@ -119,50 +81,21 @@
         </button>
       </div>
 
-      <!-- Right: Navigation Links, Login & User Menu -->
-      <div class="flex items-center gap-3">
-        <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300 mr-2">
+      <!-- Right: Direct Navigation & Single Login Button -->
+      <div class="flex items-center gap-4">
+        <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
           <a href="#services" class="hover:text-sky-400 transition">Services</a>
           <a href="#demo-video" class="hover:text-sky-400 transition">Board Demo</a>
           <a href="#pricing" class="hover:text-sky-400 transition">Plans</a>
         </div>
 
-        <!-- Help Button -->
-        <button onclick="openModal('helpModal')" title="Help & Support" class="p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-sky-400 transition">
-          <i data-lucide="help-circle" class="w-4 h-4"></i>
-        </button>
-
-        <!-- User Profile Dropdown Menu Trigger -->
-        <div class="relative">
-          <button onclick="toggleDropdown()" class="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-xs font-semibold text-white transition">
-            <div class="w-6 h-6 rounded-lg bg-indigo-600/30 border border-sky-400/40 flex items-center justify-center">
-              <i data-lucide="user" class="w-3.5 h-3.5 text-sky-400"></i>
-            </div>
-            <span id="navUserName">Educator</span>
-            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i>
+        <!-- Single Direct Login / Account Status Button (No drop down clutter) -->
+        <div id="authContainer">
+          <button id="navLoginBtn" onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold text-white flex items-center gap-2 transition shadow-lg shadow-indigo-600/30">
+            <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
+            <span>Login</span>
           </button>
-
-          <!-- Dropdown List -->
-          <div id="userDropdown" class="hidden absolute right-0 mt-2 w-52 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl py-2 z-50">
-            <button onclick="openModal('profileModal'); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-slate-300 hover:bg-slate-800 hover:text-white flex items-center gap-2">
-              <i data-lucide="user" class="w-3.5 h-3.5 text-sky-400"></i> Edit Profile
-            </button>
-            <button onclick="openModal('helpModal'); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-slate-300 hover:bg-slate-800 hover:text-white flex items-center gap-2">
-              <i data-lucide="life-buoy" class="w-3.5 h-3.5 text-emerald-400"></i> Help & Support
-            </button>
-            <button onclick="openModal('privacyModal'); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-slate-300 hover:bg-slate-800 hover:text-white flex items-center gap-2">
-              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-400"></i> Privacy Policy
-            </button>
-            <button onclick="openModal('termsModal'); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-slate-300 hover:bg-slate-800 hover:text-white flex items-center gap-2">
-              <i data-lucide="file-text" class="w-3.5 h-3.5 text-indigo-400"></i> Terms of Service
-            </button>
-            <div class="border-t border-slate-800 my-1"></div>
-            <button onclick="openLoginModal(); toggleDropdown();" class="w-full px-4 py-2 text-left text-xs text-indigo-400 hover:bg-slate-800 flex items-center gap-2 font-semibold">
-              <i data-lucide="log-in" class="w-3.5 h-3.5"></i> Login / Register
-            </button>
-          </div>
         </div>
-
       </div>
 
     </div>
@@ -179,7 +112,7 @@
       <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight">
         Teach Physics Visually. <br>
         <span class="bg-gradient-to-r from-sky-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent">
-          Smart Whiteboard + Interactive 3D Labs
+          Smart Whiteboard + Interactive 3D Stimulations
         </span>
       </h1>
 
@@ -256,7 +189,7 @@
       <div class="mt-8 relative aspect-video w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-slate-800 bg-slate-950 shadow-2xl">
         <iframe 
           class="w-full h-full"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" 
+          src="https://youtube.com/shorts/tXODVeY7V4w?feature=share" 
           title="Smartboard Demo Video" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -324,206 +257,31 @@
     </div>
   </section>
 
-  <!-- ================= DIRECT TOOL LAUNCHER (SECURE ACCESS LOCKED) ================= -->
+  <!-- ================= DIRECT TOOL LAUNCHER (SECURE ACCESS) ================= -->
   <section class="py-12 bg-slate-950 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[11px] text-slate-400 mb-3">
-        <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-amber-400"></i>
-        <span>Members Area: Subscription or Trial required to launch</span>
+        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <span>Admin & Subscribed Educator Workspace</span>
       </div>
       <h3 class="text-lg font-bold text-white mb-2">Live Teaching Launcher</h3>
-      <p class="text-xs text-slate-400 mb-6">Click below to open your tools</p>
+      <p class="text-xs text-slate-400 mb-6">Launch classroom tools below</p>
       
       <div class="flex flex-wrap justify-center gap-4">
         <button onclick="protectedLaunch('https://d1998pandey.github.io/smart-teaching-board/')" class="px-5 py-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-bold text-xs flex items-center gap-2 hover:bg-emerald-500 hover:text-slate-950 transition">
-          <i data-lucide="lock" class="w-3.5 h-3.5"></i> Smart Teaching Board
+          <i data-lucide="pen-tool" class="w-3.5 h-3.5"></i> Smart Teaching Board
         </button>
         <button onclick="protectedLaunch('https://d1998pandey.github.io/lorentz-force-3d-simulation/')" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sky-400 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
-          <i data-lucide="lock" class="w-3.5 h-3.5"></i> 3D Lorentz Sim
+          <i data-lucide="box" class="w-3.5 h-3.5"></i> 3D Lorentz Sim
         </button>
-        <button onclick="protectedLaunch('https://d1998pandey.github.io/vector-lab-simulation/')" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-indigo-300 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
-          <i data-lucide="lock" class="w-3.5 h-3.5"></i> Vector Lab
+        <button onclick="protectedLaunch('https://d1998pandey.github.io/3d-mathematical-universe/')" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-indigo-300 font-semibold text-xs flex items-center gap-2 hover:bg-slate-800 transition">
+          <i data-lucide="compass" class="w-3.5 h-3.5"></i> Graph Visualisation
         </button>
       </div>
     </div>
   </section>
 
-  <!-- ================= 1. PROFILE EDIT MODAL ================= -->
-  <div id="profileModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-        <h3 class="text-base font-bold text-white">Edit Profile & Account</h3>
-        <button onclick="closeModal('profileModal')" class="text-slate-400 hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <div class="mt-6 space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Display Name</label>
-          <input type="text" id="inputProfileName" value="Educator User" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Registered Phone / Email</label>
-          <input type="text" id="inputProfileContact" value="+91 98765 43210" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500">
-        </div>
-      </div>
-
-      <div class="mt-6 flex justify-end gap-3">
-        <button onclick="closeModal('profileModal')" class="px-4 py-2 text-xs text-slate-400 hover:text-white">Cancel</button>
-        <button onclick="saveProfile()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs">Save Changes</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= 2. HELP & SUPPORT MODAL ================= -->
-  <div id="helpModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-        <div class="flex items-center gap-2">
-          <i data-lucide="life-buoy" class="w-5 h-5 text-emerald-400"></i>
-          <h3 class="text-base font-bold text-white">Help & Educator Support</h3>
-        </div>
-        <button onclick="closeModal('helpModal')" class="text-slate-400 hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <div class="mt-5 space-y-3">
-        <a href="https://wa.me/919876543210" target="_blank" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-emerald-500/40 flex items-center justify-between transition">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-              <i data-lucide="message-circle" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <h5 class="text-xs font-bold text-white">WhatsApp Direct Help</h5>
-              <p class="text-[11px] text-slate-500">Instant setup assistance for teaching boards</p>
-            </div>
-          </div>
-          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
-        </a>
-
-        <a href="mailto:support@physixtatvam.com" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/40 flex items-center justify-between transition">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center">
-              <i data-lucide="mail" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <h5 class="text-xs font-bold text-white">Email Desk</h5>
-              <p class="text-[11px] text-slate-500">support@physixtatvam.com</p>
-            </div>
-          </div>
-          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= 3. PRIVACY POLICY MODAL (ENGLISH COMPREHENSIVE) ================= -->
-  <div id="privacyModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-        <div class="flex items-center gap-2">
-          <i data-lucide="shield-check" class="w-5 h-5 text-amber-400"></i>
-          <h3 class="text-base sm:text-lg font-bold text-white">Privacy Policy</h3>
-        </div>
-        <button onclick="closeModal('privacyModal')" class="text-slate-400 hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <div class="mt-4 max-h-96 overflow-y-auto space-y-4 text-xs text-slate-300 pr-2 leading-relaxed">
-        <p class="text-slate-400"><strong>Effective Date:</strong> November 2026</p>
-
-        <div>
-          <h4 class="font-bold text-white text-sm">1. Introduction</h4>
-          <p class="mt-1">Physix Tatvam ("we", "our", or "us") is dedicated to protecting your privacy. This Privacy Policy outlines how your personal information is collected, safeguarded, and handled across physixtatvam.com and its affiliated interactive tools.</p>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-white text-sm">2. Information We Collect</h4>
-          <ul class="list-disc pl-5 mt-1 space-y-1">
-            <li><strong>Account Data:</strong> When registering, we collect your phone number and/or email address solely for authentication and subscription validation.</li>
-            <li><strong>Usage & Device Metrics:</strong> Non-personally identifiable diagnostic data including browser type, screen resolution, and WebGL rendering capabilities to optimize 3D simulation performance.</li>
-            <li><strong>Smartboard Content:</strong> Derivations, freehand drawings, notes, and vector sketches created on the Smart Teaching Board are processed locally within your browser and are never saved to our servers without your explicit download.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-white text-sm">3. Payment & Banking Security</h4>
-          <p class="mt-1">All financial transactions, authorization mandates, and card/UPI subscriptions are processed securely through certified payment gateways (e.g., Razorpay) adhering to PCI-DSS Level 1 compliance. Physix Tatvam does not store your credit/debit card credentials, UPI PINs, or CVV numbers on its servers.</p>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-white text-sm">4. Data Sharing & Protection</h4>
-          <p class="mt-1">We enforce a strict zero data-selling policy. Your personal credentials will never be sold, leased, or disclosed to advertising brokers or unauthorized third-party platforms.</p>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-white text-sm">5. Contact Information</h4>
-          <p class="mt-1">For questions regarding data removal or privacy inquiries, please contact our support desk at <strong class="text-sky-400">support@physixtatvam.com</strong>.</p>
-        </div>
-      </div>
-
-      <div class="mt-6 pt-4 border-t border-slate-800 text-right">
-        <button onclick="closeModal('privacyModal')" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition">I Understand</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= 4. TERMS OF SERVICE MODAL (ENGLISH COMPREHENSIVE) ================= -->
-  <div id="termsModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-        <div class="flex items-center gap-2">
-          <i data-lucide="file-text" class="w-5 h-5 text-indigo-400"></i>
-          <h3 class="text-base sm:text-lg font-bold text-white">Terms of Service</h3>
-        </div>
-        <button onclick="closeModal('termsModal')" class="text-slate-400 hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <div class="mt-4 max-h-96 overflow-y-auto space-y-4 text-xs text-slate-300 pr-2 leading-relaxed">
-        <p class="text-slate-400"><strong>Last Updated:</strong> November 2026</p>
-
-        <div>
-          <h4 class="font-bold text-white text-sm">1. Acceptance of Terms</h4>
-          <p class="mt-1">By accessing or using physixtatvam.com, the Smart Teaching Board, or any associated interactive physics simulation, you confirm your acceptance of these Terms of Service. If you disagree, please refrain from using the platform.</p>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-white text-sm">2. Commercial & Educator License</h4>
-          <p class="mt-1">Subscribers are granted a non-exclusive, non-transferable license to use the Smart Teaching Board and 3D simulations for both offline and live online lecture delivery (e.g., YouTube lectures, coaching sessions, recorded tutorials). You may not reverse-engineer, redistribute the underlying source code, or resell access to the platform.</p>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-white text-sm">3. 7-Day Trial & Subscription Billing</h4>
-          <ul class="list-disc pl-5 mt-1 space-y-1">
-            <li><strong>₹1 Trial Authorization:</strong> The 7-day trial activates upon a nominal payment of ₹1. This authorizes access to all tools for 7 days.</li>
-            <li><strong>Recurring Billing:</strong> Unless cancelled prior to the conclusion of the 7-day trial period, the subscription will transition to the recurring educator plan at ₹149 per month.</li>
-            <li><strong>Cancellation:</strong> You may cancel the renewal mandate at any time through your dashboard or by notifying our support desk. Upon cancellation, access remains active until the conclusion of the paid billing cycle.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-white text-sm">4. Intellectual Property</h4>
-          <p class="mt-1">The branding, layout, mathematical simulations, and software architecture of Physix Tatvam are the exclusive intellectual property of Physix Tatvam and its founders. Unauthorized cloning or distribution is strictly prohibited.</p>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-white text-sm">5. Service Availability & Support</h4>
-          <p class="mt-1">While we strive for continuous platform availability, temporary downtime may occur for upgrades and optimizations. Support assistance is available via WhatsApp and email during working business hours.</p>
-        </div>
-      </div>
-
-      <div class="mt-6 pt-4 border-t border-slate-800 text-right">
-        <button onclick="closeModal('termsModal')" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition">Accept Terms</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= 5. ACCESS LOCKED POPUP ================= -->
+  <!-- ================= ACCESS LOCKED MODAL POPUP ================= -->
   <div id="accessLockedModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="w-full max-w-sm bg-slate-900 border border-amber-500/40 rounded-3xl p-6 text-center shadow-2xl relative">
       <button onclick="closeModal('accessLockedModal')" class="absolute right-4 top-4 text-slate-400 hover:text-white">
@@ -536,7 +294,7 @@
 
       <h4 class="text-lg font-bold text-white">Active Subscription Required</h4>
       <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-        Ye feature keval registered aur subscribed educators ke liye available hai. Kripya pehle ₹1 ka 7-Day trial lein ya login karein.
+        This feature is only available for paid subscribers
       </p>
 
       <div class="mt-6 space-y-2.5">
@@ -551,7 +309,7 @@
     </div>
   </div>
 
-  <!-- ================= 6. LOGIN MODAL ================= -->
+  <!-- ================= CLEAN FIREBASE PHONE OTP LOGIN MODAL ================= -->
   <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl relative">
       <button onclick="closeModal('loginModal')" class="absolute right-4 top-4 text-slate-400 hover:text-white">
@@ -563,18 +321,39 @@
           <i data-lucide="shield-check" class="w-5 h-5"></i>
         </div>
         <h4 class="text-base font-bold text-white">Educator Login</h4>
-        <p class="text-[11px] text-slate-400">Enter phone number to access your account</p>
+        <p class="text-[11px] text-slate-400">Verify your mobile number via OTP</p>
       </div>
 
-      <div class="space-y-3">
+      <!-- Step 1: Phone Input -->
+      <div id="authStepPhone" class="space-y-4">
         <div>
-          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Phone Number</label>
-          <input type="text" id="authInput" placeholder="+91 98765 43210" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500">
+          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Mobile Number</label>
+          <div class="flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 focus-within:border-indigo-500">
+            <span class="text-xs font-semibold text-slate-400 border-r border-slate-800 pr-2 mr-2">+91</span>
+            <input type="tel" id="userPhoneNumber" maxlength="10" placeholder="9389767700" class="w-full bg-transparent py-2.5 text-xs text-white focus:outline-none">
+          </div>
+          <span class="text-[10px] text-slate-500 mt-1 block">10-digit number bina 0 lagaye enter karein</span>
         </div>
 
-        <button onclick="mockLoginSuccess()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30">
-          Verify & Sign In
+        <!-- Visible Recaptcha container inside modal -->
+        <div id="recaptcha-container" class="flex justify-center"></div>
+
+        <button onclick="requestPhoneOTP()" id="btnSendOtp" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
+          <span>Send OTP</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
         </button>
+      </div>
+
+      <!-- Step 2: OTP Verification -->
+      <div id="authStepOtp" class="hidden space-y-4">
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Enter 6-Digit OTP</label>
+          <input type="text" id="userOtpCode" maxlength="6" placeholder="123456" class="w-full text-center tracking-widest text-lg font-bold bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <button onclick="confirmPhoneOTP()" id="btnVerifyOtp" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/20">
+          Verify OTP & Login
+        </button>
+        <button onclick="resetAuthSteps()" class="w-full text-[11px] text-slate-500 hover:text-slate-300">Change Phone Number</button>
       </div>
     </div>
   </div>
@@ -583,27 +362,187 @@
   <footer class="border-t border-slate-800 bg-[#060910] py-8 text-slate-500 text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>&copy; 2026 Physix Tatvam. All Rights Reserved.</div>
-      <div class="flex gap-4">
-        <button onclick="openModal('privacyModal')" class="hover:text-slate-300">Privacy Policy</button>
-        <button onclick="openModal('termsModal')" class="hover:text-slate-300">Terms of Service</button>
-        <button onclick="openModal('helpModal')" class="hover:text-slate-300">Help & Support</button>
-      </div>
+      <div class="text-slate-600">Secure Educator Workspace</div>
     </div>
   </footer>
 
-  <!-- ================= JAVASCRIPT ================= -->
+  <!-- ================= FIREBASE AUTHENTICATION LOGIC ================= -->
   <script>
     lucide.createIcons();
 
-    let isUserSubscribed = false;
+    // Actual Firebase Config for physixtatvam
+    const firebaseConfig = {
+      apiKey: "AIzaSyDxi2dZ6qyGYhSp4kXzoz-Oi0Xr-p4GFDw",
+      authDomain: "physixtatvam.firebaseapp.com",
+      projectId: "physixtatvam",
+      storageBucket: "physixtatvam.firebasestorage.app",
+      messagingSenderId: "554876162641",
+      appId: "1:554876162641:web:6f8922fadc69f02ba69578",
+      measurementId: "G-DX9K6FQ3ZY"
+    };
 
-    function toggleDropdown() {
-      document.getElementById('userDropdown').classList.toggle('hidden');
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    let currentUser = null;
+    let currentUserData = { role: 'teacher', isSubscribed: false };
+    let confirmationResult = null;
+
+    // Recaptcha initialization
+    function initRecaptcha() {
+      if (!window.recaptchaVerifier) {
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+          'size': 'normal',
+          'callback': function() {
+            // reCAPTCHA solved
+          }
+        });
+        window.recaptchaVerifier.render();
+      }
     }
 
+    // Auth State Observer
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        currentUser = user;
+        try {
+          const userDocRef = db.collection('users').doc(user.uid);
+          const doc = await userDocRef.get();
+
+          if (doc.exists) {
+            currentUserData = doc.data();
+          } else {
+            currentUserData = {
+              uid: user.uid,
+              phone: user.phoneNumber || '',
+              role: 'teacher',
+              isSubscribed: false,
+              createdAt: new Date().toISOString()
+            };
+            await userDocRef.set(currentUserData);
+          }
+        } catch(err) {
+          console.error("Firestore user fetch error:", err);
+        }
+        renderLoggedInUI();
+      } else {
+        renderLoggedOutUI();
+      }
+    });
+
+    // Clean Navbar Button UI
+    function renderLoggedInUI() {
+      const authContainer = document.getElementById('authContainer');
+      const badge = currentUserData.role === 'admin' ? 'Admin' : (currentUserData.isSubscribed ? 'Pro' : 'Free');
+      authContainer.innerHTML = `
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-slate-300 font-semibold bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl">
+            ${currentUser.phoneNumber || 'User'} (${badge})
+          </span>
+          <button onclick="logoutUser()" class="p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-rose-500/50 text-rose-400 text-xs transition" title="Logout">
+            <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function renderLoggedOutUI() {
+      currentUser = null;
+      currentUserData = { role: 'teacher', isSubscribed: false };
+      const authContainer = document.getElementById('authContainer');
+      authContainer.innerHTML = `
+        <button onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold text-white flex items-center gap-2 transition shadow-lg shadow-indigo-600/30">
+          <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
+          <span>Login</span>
+        </button>
+      `;
+      lucide.createIcons();
+    }
+
+    // Modal Controls
     function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-    function openLoginModal() { openModal('loginModal'); }
+    
+    function openLoginModal() {
+      openModal('loginModal');
+      initRecaptcha();
+    }
+
+    // Phone OTP Flow
+    async function requestPhoneOTP() {
+      let rawNumber = document.getElementById('userPhoneNumber').value.trim();
+      // Remove any leading 0 or extra spaces
+      rawNumber = rawNumber.replace(/^0+/, '').replace(/\s+/g, '');
+
+      if (rawNumber.length !== 10 || isNaN(rawNumber)) {
+        alert('please re-check the number');
+        return;
+      }
+
+      const fullPhoneNumber = '+91' + rawNumber;
+      const btn = document.getElementById('btnSendOtp');
+      btn.innerText = 'Sending OTP...';
+      btn.disabled = true;
+
+      try {
+        confirmationResult = await auth.signInWithPhoneNumber(fullPhoneNumber, window.recaptchaVerifier);
+        document.getElementById('authStepPhone').classList.add('hidden');
+        document.getElementById('authStepOtp').classList.remove('hidden');
+      } catch (error) {
+        alert('OTP Bhejne me error: ' + error.message);
+        btn.innerHTML = `<span>Send OTP</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>`;
+        btn.disabled = false;
+        lucide.createIcons();
+        if (window.grecaptcha) grecaptcha.reset();
+      }
+    }
+
+    async function confirmPhoneOTP() {
+      const code = document.getElementById('userOtpCode').value.trim();
+      if (code.length !== 6 || isNaN(code)) {
+        alert('Kripya 6-digit OTP enter karein');
+        return;
+      }
+
+      const btn = document.getElementById('btnVerifyOtp');
+      btn.innerText = 'Verifying...';
+      btn.disabled = true;
+
+      try {
+        await confirmationResult.confirm(code);
+        closeModal('loginModal');
+        alert('Login Successful! Welcome to Physix Tatvam.');
+      } catch (error) {
+        alert('Galat OTP! Kripya dobara check karein.');
+        btn.innerText = 'Verify OTP & Login';
+        btn.disabled = false;
+      }
+    }
+
+    function resetAuthSteps() {
+      document.getElementById('authStepOtp').classList.add('hidden');
+      document.getElementById('authStepPhone').classList.remove('hidden');
+      if (window.grecaptcha) grecaptcha.reset();
+    }
+
+    function logoutUser() {
+      auth.signOut();
+    }
+
+    // Secure Tool Launch
+    function protectedLaunch(targetUrl) {
+      if (currentUserData.role === 'admin' || currentUserData.isSubscribed) {
+        window.open(targetUrl, '_blank');
+      } else {
+        openModal('accessLockedModal');
+      }
+    }
+
+    function scrollToPricing() {
+      document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+    }
 
     function selectPlan(plan) {
       const mCard = document.getElementById('monthlyCard');
@@ -638,36 +577,8 @@
       }
     }
 
-    function protectedLaunch(targetUrl) {
-      if (isUserSubscribed) {
-        window.open(targetUrl, '_blank');
-      } else {
-        openModal('accessLockedModal');
-      }
-    }
-
-    function scrollToPricing() {
-      document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function saveProfile() {
-      const name = document.getElementById('inputProfileName').value;
-      document.getElementById('navUserName').textContent = name;
-      closeModal('profileModal');
-      alert('Profile details saved successfully!');
-    }
-
-    function mockLoginSuccess() {
-      closeModal('loginModal');
-      isUserSubscribed = true;
-      document.getElementById('navUserName').textContent = "Educator (Pro)";
-      alert('Login verified! Subscription unlocked.');
-    }
-
     function handleSubscribe(type) {
-      isUserSubscribed = true;
-      document.getElementById('navUserName').textContent = "Educator (Active)";
-      alert(type === 'trial' ? '₹1 Trial Activated!' : 'Annual Pass Activated!');
+      alert(type === 'trial' ? 'Redirecting to Razorpay ₹1 trial authorization mandate...' : 'Redirecting to Razorpay ₹1,299 annual checkout...');
     }
   </script>
 </body>
