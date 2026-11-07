@@ -371,13 +371,13 @@
 
     // Actual Firebase Config for physixtatvam
     const firebaseConfig = {
-      apiKey: "AIzaSyDxi2dZ6qyGYhSp4kXzoz-Oi0Xr-p4GFDw",
+      apiKey: "AIzaSyDxi2dZ6qyGYWSpNpXraz-Os8Irq4GPDeA",
       authDomain: "physixtatvam.firebaseapp.com",
       projectId: "physixtatvam",
       storageBucket: "physixtatvam.firebasestorage.app",
-      messagingSenderId: "554876162641",
-      appId: "1:554876162641:web:6f8922fadc69f02ba69578",
-      measurementId: "G-DX9K6FQ3ZY"
+      messagingSenderId: "534576162641",
+      appId:"1:534576162641:web:6f0922fa6b09f02ba59570",
+      measurementId: "G-DX9K6FQ32V"
     };
 
     firebase.initializeApp(firebaseConfig);
@@ -490,7 +490,7 @@
         document.getElementById('authStepPhone').classList.add('hidden');
         document.getElementById('authStepOtp').classList.remove('hidden');
       } catch (error) {
-        alert('OTP Bhejne me error: ' + error.message);
+        alert('Error in sending OTP: ' + error.message);
         btn.innerHTML = `<span>Send OTP</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>`;
         btn.disabled = false;
         lucide.createIcons();
@@ -501,7 +501,7 @@
     async function confirmPhoneOTP() {
       const code = document.getElementById('userOtpCode').value.trim();
       if (code.length !== 6 || isNaN(code)) {
-        alert('Kripya 6-digit OTP enter karein');
+        alert('Enter 6 digit OTP');
         return;
       }
 
